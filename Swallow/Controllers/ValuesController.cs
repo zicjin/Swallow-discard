@@ -14,10 +14,6 @@ namespace Swallow.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            SimpleClient client = new SimpleClient();
-            client.Connect("10.211.55.2");
-            //client.CreateSchema();
-            client.Close();
             return new string[] { "value1", "value2" };
         }
 
