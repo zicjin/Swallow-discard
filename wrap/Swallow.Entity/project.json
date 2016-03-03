@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "wrappedProject": "../../Swallow.Entity/Swallow.Entity.csproj",
+      "bin": {
+        "assembly": "../../Swallow.Entity/obj/{configuration}/Swallow.Entity.dll",
+        "pdb": "../../Swallow.Entity/obj/{configuration}/Swallow.Entity.pdb"
+      },
+        "dependencies": {
+            "MongoDB.Bson": "2.2.3",
+            "MongoDB.Driver": "2.2.3",
+            "MongoDB.Driver.Core": "2.2.3"
+        }
+    }
+  }
+}

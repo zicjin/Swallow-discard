@@ -1,4 +1,4 @@
-﻿{
+{
     "userSecretsId": "aspnet5-Swallow.Manage-4e79d3a4-088a-4941-bb50-940f08adc856",
     "version": "1.0.0-*",
     "compilationOptions": {
@@ -23,6 +23,7 @@
         "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
         "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
+        "MongoDb.Driver": "2.2.3",
         "AspNet.Identity3.MongoDB": "1.0-rc1-final-*"
     },
 
@@ -31,7 +32,11 @@
     },
 
     "frameworks": {
-        "dnx451": { }
+        "dnx451": {
+            "dependencies": {
+                "Swallow.Entity": "1.0.0-*"
+            }
+        }
     },
 
     "exclude": [

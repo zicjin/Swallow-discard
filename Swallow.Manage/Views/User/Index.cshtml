@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Swallow.Entity.User>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+@foreach (var user in Model) {
+    @user.Name
+}

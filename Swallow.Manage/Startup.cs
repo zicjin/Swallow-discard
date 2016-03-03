@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swallow.Manage.Models;
 using Swallow.Manage.Services;
+using MongoDB.Driver;
+using Swallow.Entity;
 
 namespace Swallow.Manage {
     public class Startup {
@@ -35,12 +37,14 @@ namespace Swallow.Manage {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            string connection = Configuration["Data:DefaultConnection:ConnectionString"];
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
-
-            services.AddSingleton<ApplicationDbContext>();
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddMongoStores<ApplicationDbContext, ApplicationUser, IdentityRole>()
+            
+            services.AddSingleton<AppIdentityDbContext>(provider => new AppIdentityDbContext(connection));
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddMongoStores<AppIdentityDbContext, AppUser, IdentityRole>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
@@ -48,6 +52,7 @@ namespace Swallow.Manage {
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddSingleton<AppDbContext>(provider => new AppDbContext(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
