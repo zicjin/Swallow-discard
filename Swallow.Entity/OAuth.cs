@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Swallow.Entity {
-    public class UserOAuth {
+    public class OAuth {
 
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

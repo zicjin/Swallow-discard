@@ -4,6 +4,8 @@ _build/
 .vagrant/
 TestResults/
 .vs/
+Swallow.Manage/wwwroot/lib/
+Swallow.Manage/node_modules/
 
 # Windows image file caches
 Thumbs.db
