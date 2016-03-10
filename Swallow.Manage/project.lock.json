@@ -1856,6 +1856,27 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "PagedList/1.17.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/PagedList.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.dll": {}
+        }
+      },
+      "PagedList.Mvc/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "PagedList": "1.17.0"
+        },
+        "compile": {
+          "lib/net40/PagedList.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.Mvc.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -1865,13 +1886,25 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
+      "Swallow.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "MongoDB.Bson": "2.2.3",
+          "MongoDB.Driver": "2.2.3",
+          "MongoDB.Driver.Core": "2.2.3",
+          "PagedList": "1.17.0",
+          "PagedList.Mvc": "4.5.0",
+          "Swallow.Entity": "1.0.0"
+        }
+      },
       "Swallow.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "MongoDB.Bson": "2.1.1",
-          "MongoDB.Driver": "2.1.1",
-          "MongoDB.Driver.Core": "2.1.1"
+          "MongoDB.Bson": "2.2.3",
+          "MongoDB.Driver": "2.2.3",
+          "MongoDB.Driver.Core": "2.2.3"
         }
       },
       "System.Collections/4.0.0": {
@@ -3943,6 +3976,27 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "PagedList/1.17.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/PagedList.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.dll": {}
+        }
+      },
+      "PagedList.Mvc/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "PagedList": "1.17.0"
+        },
+        "compile": {
+          "lib/net40/PagedList.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.Mvc.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -3952,13 +4006,25 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
+      "Swallow.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "MongoDB.Bson": "2.2.3",
+          "MongoDB.Driver": "2.2.3",
+          "MongoDB.Driver.Core": "2.2.3",
+          "PagedList": "1.17.0",
+          "PagedList.Mvc": "4.5.0",
+          "Swallow.Entity": "1.0.0"
+        }
+      },
       "Swallow.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "MongoDB.Bson": "2.1.1",
-          "MongoDB.Driver": "2.1.1",
-          "MongoDB.Driver.Core": "2.1.1"
+          "MongoDB.Bson": "2.2.3",
+          "MongoDB.Driver": "2.2.3",
+          "MongoDB.Driver.Core": "2.2.3"
         }
       },
       "System.Collections/4.0.0": {
@@ -6030,6 +6096,27 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "PagedList/1.17.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/PagedList.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.dll": {}
+        }
+      },
+      "PagedList.Mvc/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "PagedList": "1.17.0"
+        },
+        "compile": {
+          "lib/net40/PagedList.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/net40/PagedList.Mvc.dll": {}
+        }
+      },
       "Remotion.Linq/2.0.1": {
         "type": "package",
         "compile": {
@@ -6039,13 +6126,25 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
+      "Swallow.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "MongoDB.Bson": "2.2.3",
+          "MongoDB.Driver": "2.2.3",
+          "MongoDB.Driver.Core": "2.2.3",
+          "PagedList": "1.17.0",
+          "PagedList.Mvc": "4.5.0",
+          "Swallow.Entity": "1.0.0"
+        }
+      },
       "Swallow.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "MongoDB.Bson": "2.1.1",
-          "MongoDB.Driver": "2.1.1",
-          "MongoDB.Driver.Core": "2.1.1"
+          "MongoDB.Bson": "2.2.3",
+          "MongoDB.Driver": "2.2.3",
+          "MongoDB.Driver.Core": "2.2.3"
         }
       },
       "System.Collections/4.0.0": {
@@ -6273,6 +6372,10 @@
     "MongoDB.Driver.Core/1.0.0": {
       "type": "project",
       "path": "../wrap/MongoDB.Driver.Core/project.json"
+    },
+    "Swallow.Core/1.0.0": {
+      "type": "project",
+      "path": "../wrap/Swallow.Core/project.json"
     },
     "Swallow.Entity/1.0.0": {
       "type": "project",
@@ -7722,6 +7825,29 @@
         "tools/install.ps1"
       ]
     },
+    "PagedList/1.17.0": {
+      "type": "package",
+      "sha512": "Ou6F3WKXh49hOo0TxWM+SkIGuKllYPuPPvnSYOlQ1sTrtuEyuDUhYbSJd5Sdb06i/sWUJZTjiUecEs3Ht/Hx3g==",
+      "files": [
+        "lib/net40/PagedList.dll",
+        "lib/net40/PagedList.xml",
+        "PagedList.1.17.0.nupkg",
+        "PagedList.1.17.0.nupkg.sha512",
+        "PagedList.nuspec"
+      ]
+    },
+    "PagedList.Mvc/4.5.0": {
+      "type": "package",
+      "sha512": "D0M4qW2g4a9cwG8ozIKUnJheCrm5GpFTceqUl63AXWaAVnTgk+TysZYUOGMsBRuzid8aF+/E8b0bXM6+90jiEw==",
+      "files": [
+        "Content/Content/PagedList.css",
+        "lib/net40/PagedList.Mvc.dll",
+        "lib/net40/PagedList.Mvc.XML",
+        "PagedList.Mvc.4.5.0.nupkg",
+        "PagedList.Mvc.4.5.0.nupkg.sha512",
+        "PagedList.Mvc.nuspec"
+      ]
+    },
     "Remotion.Linq/2.0.1": {
       "type": "package",
       "sha512": "SIO6HDH6CU9GC2IZGBrc6q5X5vRhfatXrg9cVavCEG9W6v5e88b+vXjmLGQEorch4sYEIImRr+ODyUMyrmrqAg==",
@@ -8534,9 +8660,11 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-rc1-final",
       "MongoDb.Driver >= 2.2.3",
-      "AspNet.Identity3.MongoDB >= 1.0.0-rc1-final-*"
+      "AspNet.Identity3.MongoDB >= 1.0.0-rc1-final-*",
+      "PagedList.Mvc >= 4.5.0"
     ],
     "DNX,Version=v4.5.1": [
+      "Swallow.Core >= 1.0.0-*",
       "Swallow.Entity >= 1.0.0-*"
     ]
   }

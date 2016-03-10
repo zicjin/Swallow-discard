@@ -1,9 +1,45 @@
-﻿@model IEnumerable<Swallow.Entity.User>
+﻿@using Swallow.Entity
+@model IEnumerable<User>
 
 @{
-    ViewData["Title"] = "Manage Users";
+    ViewBag.Title = "Manage Users";
 }
 
-@foreach (var user in Model) {
-    @user.Name
-}
+<div class="sub-navbar">
+    <div style="margin-top:3px; float:right;">
+        @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" })) {
+            <input type="text" class="input-m form-control" value="@ViewBag.Phone" name="Phone" placeholder="搜索手机号或用户名">
+            <button type="submit" class="btn btn-primary">搜索</button>
+        }
+    </div>
+
+    <ul class="nav sub-navbar-nav">
+        <li class="active">@Html.ActionLink("所有用户", "Index")</li>
+        <li class="">@Html.ActionLink("在线用户", "IndexLineOn")</li>
+    </ul>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>Status</th>
+        <th>Rank</th>
+        <th>CreateTime</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.Id - @item.Phone - @item.Name</td>
+            <td>@((UserStatus)item.Status)</td>
+            <td>@item.Rank</td>
+            <td>@item.CreateTime</td>
+            <td>@Html.ActionLink("Card", "IndexCard", new { userId = item.Id })</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { userId = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { userId = item.Id })
+            </td>
+        </tr>
+    }
+</table>

@@ -7,11 +7,11 @@
         "assembly": "../../Swallow.Entity/obj/{configuration}/Swallow.Entity.dll",
         "pdb": "../../Swallow.Entity/obj/{configuration}/Swallow.Entity.pdb"
       },
-        "dependencies": {
-            "MongoDB.Bson": "2.2.3",
-            "MongoDB.Driver": "2.2.3",
-            "MongoDB.Driver.Core": "2.2.3"
-        }
+      "dependencies": {
+        "MongoDB.Bson": "2.2.3",
+        "MongoDB.Driver": "2.2.3",
+        "MongoDB.Driver.Core": "2.2.3"
+      }
     }
   }
 }

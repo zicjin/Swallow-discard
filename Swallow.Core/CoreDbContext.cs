@@ -3,11 +3,10 @@ using Swallow.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace Swallow.Manage.Models {
-    public class AppDbContext {
-        public AppDbContext(string connectionString): base() {
+namespace Swallow.Core {
+    public class CoreDbContext {
+        public CoreDbContext(string connectionString) {
             var database = new MongoClient(connectionString).GetDatabase("SwallowManage");
             this.Users = database.GetCollection<User>("users");
         }

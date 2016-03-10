@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Swallow.Entity;
 using Microsoft.AspNet.Authorization;
 using MongoDB.Driver;
-using Swallow.Manage.Models;
 using MongoDB.Driver.Linq;
+using PagedList;
+using Swallow.Core;
 
 namespace Swallow.Manage.Controllers {
     [Authorize]
     public class UserController : Controller {
-        private readonly IMongoQueryable<User> UserStore;
-        public UserController(AppDbContext db) {
-            this.UserStore = db.Users.AsQueryable();
+        private int page_size = 999;
+
+        private readonly IUserDb UserDb;
+        public UserController(IUserDb db) {
+            this.UserDb = db;
         }
 
-        // GET: /<controller>/
-        public async Task<IActionResult> Index() {
-            var users = await UserStore.ToListAsync();
-            return View(users);
+        public IActionResult Index(UserStatus status = UserStatus.Normal, SortPattern pattern = SortPattern.Newest, int page = 1, string query = null) {
+            var users = UserDb.Index(status, pattern, query, page, page_size);
+            ViewBag.Query = query;
+            return View(users.ToList()); // PagedList don't support asp.net5 about Razor so far
         }
     }
 }

@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "wrappedProject": "../../Swallow.Core/Swallow.Core.csproj",
+      "bin": {
+        "assembly": "../../Swallow.Core/obj/{configuration}/Swallow.Core.dll",
+        "pdb": "../../Swallow.Core/obj/{configuration}/Swallow.Core.pdb"
+      },
+      "dependencies": {
+        "MongoDB.Bson": "2.2.3",
+        "MongoDB.Driver": "2.2.3",
+        "MongoDB.Driver.Core": "2.2.3",
+        "PagedList": "1.17.0.0",
+        "PagedList.Mvc": "4.5.0.0",
+        "Swallow.Entity": "1.0.0-*"
+      }
+    }
+  }
+}

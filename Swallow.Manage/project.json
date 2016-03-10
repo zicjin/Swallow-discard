@@ -24,7 +24,8 @@
         "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
         "MongoDb.Driver": "2.2.3",
-        "AspNet.Identity3.MongoDB": "1.0-rc1-final-*"
+        "AspNet.Identity3.MongoDB": "1.0-rc1-final-*",
+        "PagedList.Mvc": "4.5.0"
     },
 
     "commands": {
@@ -34,6 +35,7 @@
     "frameworks": {
         "dnx451": {
             "dependencies": {
+                "Swallow.Core": "1.0.0-*",
                 "Swallow.Entity": "1.0.0-*"
             }
         }

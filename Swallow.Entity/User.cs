@@ -61,5 +61,8 @@ namespace Swallow.Entity {
 
         [Display(Name = "最近使用日期")]
         public DateTime LastLoginTime { get; set; }
+
+        public int Rank { get; set; } // article popular
+        public int CaseCount { get; set; } // 主动冗余
     }
 }

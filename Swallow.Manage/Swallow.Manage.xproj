@@ -20,6 +20,7 @@
     <DnxInvisibleContent Include="package.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Swallow.Core\Swallow.Core.csproj" />
     <ProjectReference Include="..\Swallow.Entity\Swallow.Entity.csproj" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
