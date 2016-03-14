@@ -1,0 +1,45 @@
+﻿@model Swallow.Entity.User
+@{
+    ViewBag.Title = "User - Edit";
+}
+
+<h2>User - Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Status)
+        @Html.DropDownListFor(m => m.Status, (IEnumerable<SelectListItem>)ViewBag.StatusSel, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Phone)
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Phone)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AuthRoles)
+        @Html.TextBoxFor(m => m.AuthRoles, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.AuthRoles)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Rank)
+        @Html.TextBoxFor(model => model.Rank, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Rank)
+    </div>
+    <input type="submit" value="Submit" class="btn btn-default" />
+}
+
+<p class="mt10">
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section Scripts {
+    @Html.Partial("_ValidationScriptsPartial")
+}

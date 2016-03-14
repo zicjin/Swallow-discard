@@ -54,7 +54,7 @@ namespace Swallow.Manage {
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-            services.AddTransient<IUserDb, UserDb>();
+            services.AddTransient<IUserDbForManage, UserDbByMongo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -15,7 +15,8 @@ namespace Swallow.Entity {
         Reported = 10,
         Freeze = 11,
         Admin = 80,
-        Delete = 90
+        Delete = 90,
+        All = 91
     }
 
     public class User {

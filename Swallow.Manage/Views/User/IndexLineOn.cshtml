@@ -1,0 +1,16 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "在线用户";
+    //var users = (List<string>)Model;
+}
+
+<div class="sub-navbar">
+    <ul class="nav sub-navbar-nav">
+        <li class="">@Html.ActionLink("所有用户", "Index")</li>
+        <li class="active">@Html.ActionLink("在线用户", "IndexLineOn")</li>
+    </ul>
+</div>
+
+<h2>@ViewBag.Title</h2>
+@*在线用户 @(users.Count) 个*@
