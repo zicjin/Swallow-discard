@@ -8,7 +8,8 @@ var gulp = require("gulp"),
     uglify = require("gulp-uglify");
 
 var paths = {
-    webroot: "./wwwroot/"
+    webroot: "./wwwroot/",
+    npm: "./node_modules/"
 };
 
 paths.js = paths.webroot + "js/**/*.js";

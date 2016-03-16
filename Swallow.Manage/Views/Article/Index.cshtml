@@ -1,0 +1,70 @@
+﻿@using Swallow.Entity
+@model IEnumerable<Article>
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+<div class="sub-navbar">
+    <div class="sub-right">
+        @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" })) {
+            <input type="text" class="input-m form-control" value="@ViewBag.Phone" name="Phone" placeholder="搜索标题">
+            <button type="submit" class="btn btn-primary">搜索</button>
+        }
+    </div>
+    <div class="sub-left form-inline">
+        OrderBy:
+        @Html.DropDownList("select_pattern", (IEnumerable<SelectListItem>)ViewBag.PatternSel, new { @class = "form-control sel-query" })
+    </div>
+    <ul class="nav sub-navbar-nav">
+        <li class="active">@Html.ActionLink("Index", "Index")</li>
+        <li class="">@Html.ActionLink("Create", "Create")</li>
+    </ul>
+</div>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            Status
+            @Html.DropDownList("select_status", (IEnumerable<SelectListItem>)ViewBag.StatusSel, new { @class = "sel-query"})
+        </th>
+        <th>
+            Type
+            @Html.DropDownList("select_type", (IEnumerable<SelectListItem>)ViewBag.TypeSel, new { @class = "sel-query" })
+        </th>
+        <th>
+            Vector
+            @Html.DropDownList("select_vector", (IEnumerable<SelectListItem>)ViewBag.VectorSel, new { @class = "sel-query" })
+        </th>
+        <th>RedditRank</th>
+        <th>DifficultyRank</th>
+        <th>CreateTime</th>
+        <th>UserName</th>
+        <th>Length</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.Id - @item.Title</td>
+            <td>@((ArticleStatus)item.Status)</td>
+            <td>@((ArticleType)item.Type)</td>
+            <td>@((ArticleVector)item.Vector)</td>
+            <td>@item.RedditRank</td>
+            <td>@item.DifficultyRank</td>
+            <td>@item.CreateTime</td>
+            <td>@item.UserName</td>
+            <td>@item.Length</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { userId = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { userId = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+@section Scripts {
+    <environment names="Development">
+        <script src="~/js/index.js" asp-append-version="true"></script>
+    </environment>
+}

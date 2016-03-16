@@ -9,18 +9,16 @@ namespace Swallow.Core {
     public class UserDbByMongo : IUserDbForManage {
         private readonly IMongoCollection<User> Db;
 
-        public UserDbByMongo(CoreDbContext db) {
-            this.Db = db.Users;
+        public UserDbByMongo(MongoDbContext mongo) {
+            this.Db = mongo.Users;
         }
 
         public IPagedList<User> Index(UserStatus status = UserStatus.Normal, SortPattern pattern = SortPattern.Newest, string query = null, int page = 1, int page_size = 30) {
-            var users = Db.AsQueryable().Where(d =>
-                status != UserStatus.All? d.Status == status: true
-                && (string.IsNullOrEmpty(query) || query == d.Phone || query == d.Name)
-            );
-
-            users = pattern.GetOrderBy()(users);
-
+            var users = Db.AsQueryable();
+            if (status != UserStatus.All)
+                users = users.Where(d => d.Status == status);
+            users = users.Where(d => (string.IsNullOrEmpty(query) || query == d.Phone || query == d.Name));
+            users = pattern.UserOrderBy()(users);
             return users.ToPagedList(page, page_size);
         }
 

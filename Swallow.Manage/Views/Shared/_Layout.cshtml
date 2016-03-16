@@ -30,9 +30,11 @@
                     <a asp-controller="Home" asp-action="Index" class="navbar-brand">Swallow.Manage</a>
                 </div>
                 <div class="navbar-collapse collapse">
+                    @{ string controller = ViewContext.RouteData.Values["controller"].ToString(); }
                     <ul class="nav navbar-nav">
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="User" asp-action="Index">Users</a></li>
+                        <li class="@(controller == "Home" ? "active" : "")"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="@(controller == "User" ? "active" : "")"><a asp-controller="User" asp-action="Index">Users</a></li>
+                        <li class="@(controller == "Article" ? "active" : "")"><a asp-controller="Article" asp-action="Index">Articles</a></li>
                     </ul>
                     @await Html.PartialAsync("_LoginPartial")
                 </div>
@@ -50,6 +52,7 @@
             <script src="~/lib/jquery/dist/jquery.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
             <script src="~/js/site.js" asp-append-version="true"></script>
+            <script src="~/js/query-string.js" asp-append-version="true"></script>
         </environment>
         <environment names="Staging,Production">
             <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"

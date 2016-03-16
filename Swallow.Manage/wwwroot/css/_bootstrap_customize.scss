@@ -4,7 +4,17 @@
 .sub-navbar {
     background: #f9f9f9;
     margin-bottom: 10px;
-
+    position:relative;
+    .sub-right{
+        position:absolute;
+        top:3px;
+        right:0;
+    }
+    .sub-left{
+        position:absolute;
+        top:3px;
+        left:0;
+    }
     .sub-navbar-nav {
         text-align: center;
 

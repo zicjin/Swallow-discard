@@ -3,10 +3,6 @@ body {
   padding-top: 50px;
   padding-bottom: 20px; }
 
-.body-content {
-  padding-left: 15px;
-  padding-right: 15px; }
-
 input, select, textarea {
   max-width: 280px; }
 
@@ -311,7 +307,16 @@ input, select, textarea {
 
 .sub-navbar {
   background: #f9f9f9;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  position: relative; }
+  .sub-navbar .sub-right {
+    position: absolute;
+    top: 3px;
+    right: 0; }
+  .sub-navbar .sub-left {
+    position: absolute;
+    top: 3px;
+    left: 0; }
   .sub-navbar .sub-navbar-nav {
     text-align: center; }
     .sub-navbar .sub-navbar-nav > li {

@@ -1,0 +1,17 @@
+﻿@model Swallow.Entity.Article
+
+<h2>User - Delete</h2>
+
+<p class="alert-danger">@ViewBag.Failure</p>
+
+<h3>Are you sure you want to delete this?</h3>
+
+@Html.DisplayForModel()
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" />
+    </p>
+    @Html.ActionLink("Back to List", "Index")
+}

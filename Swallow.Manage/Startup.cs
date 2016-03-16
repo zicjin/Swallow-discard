@@ -39,7 +39,7 @@ namespace Swallow.Manage {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             string connection = Configuration["Data:DefaultConnection:ConnectionString"];
-            services.AddSingleton<CoreDbContext>(provider => new CoreDbContext(connection));
+            services.AddSingleton<MongoDbContext>(provider => new MongoDbContext(connection));
 
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
@@ -55,6 +55,7 @@ namespace Swallow.Manage {
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<IUserDbForManage, UserDbByMongo>();
+            services.AddTransient<IArticleDbForManage, ArticleDbByMongo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

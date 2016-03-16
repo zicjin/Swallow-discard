@@ -12,6 +12,7 @@ namespace Swallow.Entity {
         Reported = 10,
         Freeze = 11,
         Delete = 90,
+        All = 91
     }
 
     public enum ArticleType {
@@ -21,6 +22,7 @@ namespace Swallow.Entity {
         Video = 3,
         Voice = 4,
         Conversation = 5,
+        All = 11
     }
 
     public enum ArticleVector {
@@ -28,6 +30,7 @@ namespace Swallow.Entity {
         Pdf = 1,
         Web = 2,
         Markdown = 3,
+        All = 11
     }
 
     public class Article {
@@ -41,6 +44,9 @@ namespace Swallow.Entity {
             return (Status != ArticleStatus.Freeze && Status != ArticleStatus.Delete);
         }
 
+        public ArticleVector Vector { get; set; }
+        public string VectorId { get; set; } // 载体
+
         public string NodeId { get; set; }
 
         public string UserId { get; set; }
@@ -50,21 +56,21 @@ namespace Swallow.Entity {
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "加入日期")]
         public DateTime CreateTime { get; set; }
-        public virtual void Creat() {
+        public virtual void Create() {
             CreateTime = DateTime.Now;
             Status = ArticleStatus.Unapproved;
         }
-
-        public ArticleVector Vector { get; set; }
-        public string VectorId { get; set; } // 载体
 
         public string Title { get; set; }
         public string Introduction { get; set; }
 
         public int Length { get; set; } // 长度（单位字）
 
+        [Range(0, 10, ErrorMessage = "需要大于等于0，小于10")]
         public int DifficultyRank { get; set; } // 1-10 易到难
+        [Range(0, 99, ErrorMessage = "需要大于等于0，小于100")]
         public int RedditRank { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "需要大于等于0")]
         public int LikeCount { get; set; }
     }
 }

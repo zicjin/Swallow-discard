@@ -5,8 +5,10 @@ _build/
 TestResults/
 .vs/
 Swallow.Manage/wwwroot/lib/
+Swallow.Manage/wwwroot/css/site.css
 Swallow.Manage/wwwroot/css/site.min.css
 Swallow.Manage/wwwroot/js/site.min.js
+Swallow.Manage/wwwroot/js/index.min.js
 Swallow.Manage/node_modules/
 
 # Windows image file caches
