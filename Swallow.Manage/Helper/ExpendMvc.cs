@@ -9,6 +9,8 @@ using Microsoft.AspNet.Mvc.ViewFeatures;
 namespace Swallow.Manage {
     public static class ExpendMvc {
 
+        // if (lines != null) ViewBag.LinesParams = string.Join("\n", lines);
+        // @Html.TextArea("LinesParams", (string)ViewBag.LinesParams })
         public static IEnumerable<string> SplitTextArea(string content) {
             content = content.Replace("\r", string.Empty); //window下表单input换行会新增'\r'
             return content.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);

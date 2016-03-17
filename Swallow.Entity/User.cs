@@ -47,8 +47,6 @@ namespace Swallow.Entity {
             return Encrypt.EncryptUserPassword(value);
         }
 
-        public IEnumerable<string> Roles { get; set; }
-
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "加入日期")]

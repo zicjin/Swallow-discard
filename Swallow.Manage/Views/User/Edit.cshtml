@@ -24,11 +24,6 @@
         @Html.ValidationMessageFor(model => model.Phone)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Roles)
-        @Html.TextArea("RolesParams", (string)ViewBag.RolesParams, new { @class = "form-control", rows = 3 })
-        @Html.ValidationMessageFor(model => model.Roles)
-    </div>
-    <div class="form-group">
         @Html.LabelFor(model => model.Rank)
         @Html.TextBoxFor(model => model.Rank, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Rank)

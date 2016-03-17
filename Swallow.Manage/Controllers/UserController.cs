@@ -47,8 +47,6 @@ namespace Swallow.Manage.Controllers {
                 return View(model);
             }
 
-            model.Roles = ExpendMvc.SplitTextArea(RolesParams);
-
             string failure;
             var user = UserDb.Create(model, out failure);
             if (!string.IsNullOrEmpty(failure) || user == null) {
@@ -60,8 +58,6 @@ namespace Swallow.Manage.Controllers {
 
         private void BuildEditView(User user) {
             ViewBag.StatusSel = ((UserStatus)user.Status).ToSelectListItemsFilterNull();
-            if (user.Roles != null)
-                ViewBag.RolesParams = string.Join("\n", user.Roles);
         }
 
         public ActionResult Edit(string id) {
@@ -80,8 +76,6 @@ namespace Swallow.Manage.Controllers {
                 BuildEditView(model);
                 return View(model);
             }
-
-            model.Roles = ExpendMvc.SplitTextArea(RolesParams);
 
             string failure;
             var user = UserDb.Update(model, out failure);
