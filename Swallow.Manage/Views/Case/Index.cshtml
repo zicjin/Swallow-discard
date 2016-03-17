@@ -1,21 +1,23 @@
 ﻿@using Swallow.Entity
-@model IEnumerable<User>
+@model IEnumerable<Case>
 
 @{
-    ViewBag.Title = "Users";
+    ViewBag.Title = "Articles";
 }
 
 <div class="sub-navbar">
-    <div style="margin-top:3px; float:right;">
-        @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" })) {
-            <input type="text" class="form-control" value="@ViewBag.Query" name="query" placeholder="手机号/用户名/ID">
+    <div class="sub-right">
+        @using (Html.BeginForm("Index", "Case", FormMethod.Get, new { @class = "form-inline" })) {
+            <input type="text" class="input-m form-control" value="@ViewBag.Query" name="query" placeholder="Words">
             <button type="submit" class="btn btn-primary">搜索</button>
         }
     </div>
-
+    <div class="sub-left form-inline">
+        OrderBy:
+        @Html.DropDownList("select_pattern", (IEnumerable<SelectListItem>)ViewBag.PatternSel, new { @class = "form-control sel-query" })
+    </div>
     <ul class="nav sub-navbar-nav">
         <li class="active">@Html.ActionLink("Index", "Index")</li>
-        <li class="">@Html.ActionLink("在线用户", "IndexLineOn")</li>
         <li class="">@Html.ActionLink("Create", "Create")</li>
     </ul>
 </div>
@@ -23,31 +25,29 @@
 <table class="table">
     <tr>
         <th></th>
-        <th>Name</th>
         <th>
             Status
-            @Html.DropDownList("select_status", (IEnumerable<SelectListItem>)ViewBag.StatusSel, new { @class = "sel-query" })
+            @Html.DropDownList("select_status", (IEnumerable<SelectListItem>)ViewBag.StatusSel, new { @class = "sel-query"})
         </th>
-        <th>Roles</th>
         <th>Rank</th>
+        <th>Context</th>
         <th>CreateTime</th>
-        <th>Cases</th>
-        <th>Artilces</th>
+        <th>User</th>
+        <th>Acticle</th>
         <th></th>
     </tr>
     @foreach (var item in Model) {
         <tr>
-            <td>@item.Id - @item.Phone</td>
-            <td>@item.Name</td>
-            <td>@((UserStatus)item.Status)</td>
-            <td>@string.Join(",", item.Roles)</td>
+            <td>@item.Id - @item.Words</td>
+            <td>@((ArticleStatus)item.Status)</td>
             <td>@item.Rank</td>
+            <td>@item.Context</td>
             <td>@item.CreateTime</td>
             <td>
-                @Html.ActionLink(item.CaseCount.ToString(), "Index", "Case", new { userId = item.Id })
+                @Html.ActionLink(item.UserId, "Item", "User", new { id = item.UserId })
             </td>
             <td>
-                @Html.ActionLink("articles", "Index", "Article", new { query = item.Id })
+                @Html.ActionLink(item.ArticleTitle, "Item", "Acticle", new { id = item.ArticleId })
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id })

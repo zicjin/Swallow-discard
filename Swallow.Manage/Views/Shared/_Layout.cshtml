@@ -19,7 +19,7 @@
     </head>
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -35,12 +35,13 @@
                         <li class="@(controller == "Home" ? "active" : "")"><a asp-controller="Home" asp-action="Index">Home</a></li>
                         <li class="@(controller == "User" ? "active" : "")"><a asp-controller="User" asp-action="Index">Users</a></li>
                         <li class="@(controller == "Article" ? "active" : "")"><a asp-controller="Article" asp-action="Index">Articles</a></li>
+                        <li class="@(controller == "Case" ? "active" : "")"><a asp-controller="Case" asp-action="Index">Cases</a></li>
                     </ul>
                     @await Html.PartialAsync("_LoginPartial")
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container-fluid body-content">
             @RenderBody()
             <hr />
             <footer>

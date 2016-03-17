@@ -45,6 +45,19 @@ namespace Swallow.Entity {
             }
             return _orderby;
         }
+
+        public static Func<IMongoQueryable<Case>, IOrderedMongoQueryable<Case>> CaseOrderBy(this SortPattern pattern) {
+            Func<IMongoQueryable<Case>, IOrderedMongoQueryable<Case>> _orderby;
+            switch (pattern) {
+                case SortPattern.Rank:
+                    _orderby = (a => a.OrderByDescending(d => d.Rank));
+                    break;
+                default: // Newest
+                    _orderby = (a => a.OrderByDescending(d => d.CreateTime));
+                    break;
+            }
+            return _orderby;
+        }
     }
 
 }

@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Swallow.Entity {
     public enum UserStatus {
-        Unapproved = 0,
-        Normal = 1,
-        Charger = 2,
+        All = 0,
+        Unapproved = 1,
+        Normal = 2,
+        Charger = 3,
         Reported = 10,
         Freeze = 11,
         Admin = 80,
         Delete = 90,
-        All = 91
     }
 
     public class User {
@@ -49,13 +47,13 @@ namespace Swallow.Entity {
             return Encrypt.EncryptUserPassword(value);
         }
 
-        public IEnumerable<string> AuthRoles { get; set; }
+        public IEnumerable<string> Roles { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "加入日期")]
         public DateTime CreateTime { get; set; }
-        public virtual void Creat() {
+        public virtual void Create() {
             CreateTime = DateTime.Now;
             Status = UserStatus.Unapproved;
         }

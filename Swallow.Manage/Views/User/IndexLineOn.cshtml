@@ -6,9 +6,17 @@
 }
 
 <div class="sub-navbar">
+    <div style="margin-top:3px; float:right;">
+        @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" })) {
+            <input type="text" class="input-m form-control" value="@ViewBag.Phone" name="Phone" placeholder="手机号/用户名/ID">
+            <button type="submit" class="btn btn-primary">搜索</button>
+        }
+    </div>
+
     <ul class="nav sub-navbar-nav">
-        <li class="">@Html.ActionLink("所有用户", "Index")</li>
+        <li class="">@Html.ActionLink("Index", "Index")</li>
         <li class="active">@Html.ActionLink("在线用户", "IndexLineOn")</li>
+        <li class="">@Html.ActionLink("Create", "Create")</li>
     </ul>
 </div>
 

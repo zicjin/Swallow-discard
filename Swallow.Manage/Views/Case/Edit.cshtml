@@ -1,0 +1,50 @@
+﻿@model Swallow.Entity.Case
+@{
+    ViewBag.Title = "Case - Edit";
+}
+
+<h2>Case - Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Words)
+        @Html.TextBoxFor(m => m.Words, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Words)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Context)
+        @Html.TextBoxFor(m => m.Context, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Context)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Status)
+        @Html.DropDownListFor(m => m.Status, (IEnumerable<SelectListItem>)ViewBag.StatusSel, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Rank)
+        @Html.TextBoxFor(m => m.Rank, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Rank)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserId)
+        @Html.TextBoxFor(m => m.UserId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.UserId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ArticleId)
+        @Html.TextBoxFor(m => m.ArticleId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ArticleId)
+    </div>
+    <input type="submit" value="Submit" class="btn btn-default" />
+}
+
+<p class="mt10">
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section Scripts {
+    @Html.Partial("_ValidationScriptsPartial")
+}

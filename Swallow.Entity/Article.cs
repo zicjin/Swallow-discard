@@ -7,30 +7,31 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Swallow.Entity {
     public enum ArticleStatus {
-        Unapproved = 0,
-        Normal = 1,
+        All = 0,
+        Unapproved = 1,
+        Normal = 2,
         Reported = 10,
         Freeze = 11,
         Delete = 90,
-        All = 91
     }
 
     public enum ArticleType {
-        Unknow = 0,
+        All = 0,
         Fiction = 1,
         Realism = 2,
         Video = 3,
         Voice = 4,
         Conversation = 5,
-        All = 11
+        Unknow = 10
     }
 
     public enum ArticleVector {
-        Text = 0,
-        Pdf = 1,
-        Web = 2,
-        Markdown = 3,
-        All = 11
+        All = 0,
+        Text = 1,
+        Pdf = 2,
+        Web = 3,
+        Markdown = 4,
+        
     }
 
     public class Article {

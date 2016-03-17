@@ -44,9 +44,9 @@ namespace Swallow.Manage {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
             
-            services.AddSingleton<AppIdentityDbContext>(provider => new AppIdentityDbContext(connection));
+            services.AddSingleton<IdentityContext>(provider => new IdentityContext(connection));
             services.AddIdentity<AppUser, IdentityRole>()
-                .AddMongoStores<AppIdentityDbContext, AppUser, IdentityRole>()
+                .AddMongoStores<IdentityContext, AppUser, IdentityRole>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
@@ -54,8 +54,10 @@ namespace Swallow.Manage {
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
             services.AddTransient<IUserDbForManage, UserDbByMongo>();
             services.AddTransient<IArticleDbForManage, ArticleDbByMongo>();
+            services.AddTransient<ICaseDbForManage, CaseDbByMongo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

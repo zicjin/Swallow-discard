@@ -1,9 +1,24 @@
 ﻿@model Swallow.Entity.User
 @{
-    ViewBag.Title = "User - Edit";
+    ViewBag.Title = "User - Create";
 }
 
-<h2>User - Edit</h2>
+<div class="sub-navbar">
+    <div style="margin-top:3px; float:right;">
+        @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" })) {
+            <input type="text" class="input-m form-control" value="@ViewBag.Phone" name="Phone" placeholder="手机号/用户名/ID">
+            <button type="submit" class="btn btn-primary">搜索</button>
+        }
+    </div>
+
+    <ul class="nav sub-navbar-nav">
+        <li class="">@Html.ActionLink("Index", "Index")</li>
+        <li class="">@Html.ActionLink("在线用户", "IndexLineOn")</li>
+        <li class="active">@Html.ActionLink("Create", "Create")</li>
+    </ul>
+</div>
+
+<h2>User - Create</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -15,13 +30,14 @@
         @Html.ValidationMessageFor(model => model.Name)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Status)
-        @Html.DropDownListFor(m => m.Status, (IEnumerable<SelectListItem>)ViewBag.StatusSel, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
         @Html.LabelFor(m => m.Phone)
         @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.Phone)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Password)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Roles)

@@ -61,7 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaseDbByMongo.cs" />
     <Compile Include="ArticleDbByMongo.cs" />
+    <Compile Include="ICaseDbForManage.cs" />
     <Compile Include="MongoDbContext.cs" />
     <Compile Include="IArticleDbForManage.cs" />
     <Compile Include="IUserDbForManage.cs" />

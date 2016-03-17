@@ -10,47 +10,58 @@ using Swallow.Core;
 
 namespace Swallow.Manage.Controllers {
     [Authorize]
-    public class UserController : Controller {
+    public class CaseController : Controller {
         private int page_size = 999;
 
-        private readonly IUserDbForManage UserDb;
-        public UserController(IUserDbForManage db) {
-            this.UserDb = db;
+        private readonly ICaseDbForManage CaseDb;
+        public CaseController(ICaseDbForManage db) {
+            this.CaseDb = db;
         }
 
         public IActionResult Item(string id) {
-            var user = UserDb.Get(id);
+            var user = CaseDb.Get(id);
             return View(user);
         }
 
-        public IActionResult Index(UserStatus status = UserStatus.All, string query = null, SortPattern pattern = SortPattern.Newest, int page = 1) {
-            var users = UserDb.Index(status, query, pattern, page, page_size);
-            ViewBag.StatusSel = status.ToSelectListItems();
+        public IActionResult Index(
+            CaseStatus status = CaseStatus.All,
+            string userId = null,
+            string articleId = null,
+            SortPattern pattern = SortPattern.Newest,
+            string query = null,
+            int page = 1
+        ) {
+            var users = CaseDb.Index(status, userId, articleId, query, pattern, page, page_size);
             ViewBag.Query = query;
+            ViewBag.StatusSel = status.ToSelectListItems();
+            ViewBag.UserId = userId;
+            ViewBag.ArticleId = articleId;
+            ViewBag.PatternSel = pattern.ToSelectListItems();
             return View(users.ToList()); // PagedList don't support asp.net5 about Razor so far
         }
 
-        public ActionResult IndexLineOn() {
-            return this.View();
+        private void BuildCreateView() {
+            ViewBag.StatusSel = ArticleStatus.Unapproved.ToSelectListItems();
+            ViewBag.TypeSel = ArticleType.Unknow.ToSelectListItems();
+            ViewBag.VectorSel = ArticleVector.Text.ToSelectListItems();
         }
 
         public ActionResult Create() {
-            return View(new User());
+            BuildCreateView();
+            return View(new Case());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(User model, string RolesParams) {
+        public ActionResult Create(Case model) {
+            BuildCreateView();
             ModelState.Remove("CreatDate");
             if (!ModelState.IsValid) {
                 ModelState.AddModelError("", "表单验证失败。");
                 return View(model);
             }
-
-            model.Roles = ExpendMvc.SplitTextArea(RolesParams);
-
             string failure;
-            var user = UserDb.Create(model, out failure);
+            var user = CaseDb.Create(model, out failure);
             if (!string.IsNullOrEmpty(failure) || user == null) {
                 ModelState.AddModelError("", failure ?? "新建失败");
                 return View(model);
@@ -58,43 +69,36 @@ namespace Swallow.Manage.Controllers {
             return RedirectToAction("Index");
         }
 
-        private void BuildEditView(User user) {
-            ViewBag.StatusSel = ((UserStatus)user.Status).ToSelectListItemsFilterNull();
-            if (user.Roles != null)
-                ViewBag.RolesParams = string.Join("\n", user.Roles);
+        private void BuildEditView(Case article) {
+            ViewBag.StatusSel = ((CaseStatus)article.Status).ToSelectListItems();
         }
 
         public ActionResult Edit(string id) {
-            var user = UserDb.Get(id);
-            BuildEditView(user);
-            return View(user);
+            var _case = CaseDb.Get(id);
+            BuildEditView(_case);
+            return View(_case);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(User model, string RolesParams) { // [Bind(Exclude = "Password,CreatDate")]
-            ModelState.Remove("Password");
-            ModelState.Remove("CreatDate"); // http://stackoverflow.com/a/25314838/346701
+        public ActionResult Edit(Case model) {
+            BuildEditView(model);
+            ModelState.Remove("CreatDate");
             if (!ModelState.IsValid) {
                 ModelState.AddModelError("", "表单验证失败。");
-                BuildEditView(model);
                 return View(model);
             }
-
-            model.Roles = ExpendMvc.SplitTextArea(RolesParams);
-
             string failure;
-            var user = UserDb.Update(model, out failure);
+            var user = CaseDb.Update(model, out failure);
             if (!string.IsNullOrEmpty(failure) || user == null) {
                 ModelState.AddModelError("", failure ?? "更新失败");
-                BuildEditView(model);
                 return View(model);
             }
             return RedirectToAction("Index");
         }
 
         public ActionResult Delete(string id, string failure) {
-            var user = UserDb.Get(id);
+            var user = CaseDb.Get(id);
             ViewBag.Failure = failure;
             return View(user);
         }
@@ -102,9 +106,9 @@ namespace Swallow.Manage.Controllers {
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id) {
             string failure;
-            UserDb.Delete(id, out failure);
+            CaseDb.Delete(id, out failure);
             if (!string.IsNullOrEmpty(failure))
-                return RedirectToAction("Delete", new { id = id, failure = failure});
+                return RedirectToAction("Delete", new { id = id, failure = failure });
             return RedirectToAction("Index");
         }
     }

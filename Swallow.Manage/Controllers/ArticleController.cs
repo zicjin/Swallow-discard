@@ -18,27 +18,26 @@ namespace Swallow.Manage.Controllers {
             this.ArticleDb = db;
         }
 
+        public IActionResult Item(string id) {
+            var user = ArticleDb.Get(id);
+            return View(user);
+        }
+
         public IActionResult Index(
-            ArticleStatus status = ArticleStatus.Normal,
+            ArticleStatus status = ArticleStatus.All,
             ArticleType type = ArticleType.All,
             ArticleVector vector = ArticleVector.All,
-            SortPattern pattern = SortPattern.Newest,
             string query = null,
+            SortPattern pattern = SortPattern.Newest,
             int page = 1
         ) {
-            var users = ArticleDb.Index(status, type, vector, pattern, query, page, page_size);
+            var users = ArticleDb.Index(status, type, vector, query, pattern, page, page_size);
             ViewBag.Query = query;
             ViewBag.StatusSel = status.ToSelectListItems();
             ViewBag.TypeSel = type.ToSelectListItems();
             ViewBag.VectorSel = vector.ToSelectListItems();
             ViewBag.PatternSel = pattern.ToSelectListItems();
             return View(users.ToList()); // PagedList don't support asp.net5 about Razor so far
-        }
-
-        public ActionResult Search(string query) {
-            var list = new List<User>();
-            var users = ArticleDb.Index(ArticleStatus.All, ArticleType.All, ArticleVector.All, SortPattern.Newest, query);
-            return View("Index", users.ToList());
         }
 
         private void BuildCreateView() {
@@ -62,6 +61,7 @@ namespace Swallow.Manage.Controllers {
                 return View(model);
             }
             string failure;
+            model.UserId = User.Identity.Name;
             var user = ArticleDb.Create(model, out failure);
             if (!string.IsNullOrEmpty(failure) || user == null) {
                 ModelState.AddModelError("", failure ?? "新建失败");
@@ -77,9 +77,9 @@ namespace Swallow.Manage.Controllers {
         }
 
         public ActionResult Edit(string id) {
-            var user = ArticleDb.Get(id);
-            BuildEditView(user);
-            return View(user);
+            var article = ArticleDb.Get(id);
+            BuildEditView(article);
+            return View(article);
         }
 
         [HttpPost]

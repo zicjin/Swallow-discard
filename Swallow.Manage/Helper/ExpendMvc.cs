@@ -9,6 +9,11 @@ using Microsoft.AspNet.Mvc.ViewFeatures;
 namespace Swallow.Manage {
     public static class ExpendMvc {
 
+        public static IEnumerable<string> SplitTextArea(string content) {
+            content = content.Replace("\r", string.Empty); //window下表单input换行会新增'\r'
+            return content.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+        }
+
         public static IList<SelectListItem> ToSelectListItem<T>(this IEnumerable<T> items,
             Func<T, string> getText, Func<T, string> getValue, string selectValue) {
             return items.OrderBy(i => getText(i))
@@ -32,6 +37,10 @@ namespace Swallow.Manage {
                        Text = e.ToString(),
                        Value = Convert.ToInt32(e).ToString()
                    };
+        }
+
+        public static IEnumerable<SelectListItem> ToSelectListItemsFilterNull<TEnum>(this TEnum enumObj) {
+            return enumObj.ToSelectListItems().ToList().Where(d => d.Value != "0");
         }
 
         public static IEnumerable<SelectListItem> ToSelectListItemsWithNull<TEnum>(this TEnum enumObj) {

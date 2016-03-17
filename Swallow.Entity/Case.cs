@@ -5,9 +5,17 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Swallow.Entity {
+    public enum CaseStatus {
+        All = 0,
+        Normal = 1,
+        Done = 10,
+        Delete = 90,
+    }
+
     public class Case {
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        public CaseStatus Status { get; set; }
 
         public string UserId { get; set; }
         public string ArticleId { get; set; }
@@ -17,7 +25,13 @@ namespace Swallow.Entity {
 
         public string Context { get; set; }
         public int Rank { get; set; }
-        
+        public DateTime CreateTime { get; set; }
+
+        public virtual void Create() {
+            CreateTime = DateTime.Now;
+            Status = CaseStatus.Normal;
+        }
+
         // public string Postition { get; set; } // Todo: 与全文索引技术有关，待议
 
         // public string TransForContext { get; set; } // Todo: Maybe

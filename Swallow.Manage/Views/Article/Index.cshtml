@@ -7,8 +7,8 @@
 
 <div class="sub-navbar">
     <div class="sub-right">
-        @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" })) {
-            <input type="text" class="input-m form-control" value="@ViewBag.Phone" name="Phone" placeholder="搜索标题">
+        @using (Html.BeginForm("Index", "Article", FormMethod.Get, new { @class = "form-inline" })) {
+            <input type="text" class="input-m form-control" value="@ViewBag.Query" name="query" placeholder="标题/简介">
             <button type="submit" class="btn btn-primary">搜索</button>
         }
     </div>
@@ -40,6 +40,7 @@
         <th>RedditRank</th>
         <th>DifficultyRank</th>
         <th>CreateTime</th>
+        <th>Creator</th>
         <th>UserName</th>
         <th>Length</th>
         <th></th>
@@ -53,11 +54,13 @@
             <td>@item.RedditRank</td>
             <td>@item.DifficultyRank</td>
             <td>@item.CreateTime</td>
-            <td>@item.UserName</td>
+            <td>
+                @Html.ActionLink("creator", "Item", "User", new { id = item.UserId })
+            </td>
             <td>@item.Length</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { userId = item.Id })
-                @Html.ActionLink("Delete", "Delete", new { userId = item.Id })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
     }

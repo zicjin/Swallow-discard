@@ -13,5 +13,6 @@ input, select, textarea {max-width: 280px;}
 @import "var";
 @import "com";
 @import "_bootstrap_customize";
+form.navbar-right{margin-right: 0;}
 
 span.field-validation-error{color:red;}

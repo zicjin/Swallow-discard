@@ -1,12 +1,12 @@
-﻿@model Swallow.Entity.Article
+﻿@model Swallow.Entity.Case
 @{
-    ViewBag.Title = "Article - Create";
+    ViewBag.Title = "Case - Create";
 }
 
 <div class="sub-navbar">
     <div class="sub-right">
         @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" })) {
-            <input type="text" class="input-m form-control" value="@ViewBag.Phone" name="Phone" placeholder="搜索标题">
+            <input type="text" class="input-m form-control" value="@ViewBag.Phone" name="Phone" placeholder="搜索Words">
             <button type="submit" class="btn btn-primary">搜索</button>
         }
     </div>
@@ -16,39 +16,40 @@
     </ul>
 </div>
 
-<h2>Article - Create</h2>
+<h2>Case - Create</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)
     <div class="form-group">
-        @Html.LabelFor(m => m.Title)
-        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Title)
+        @Html.LabelFor(m => m.Words)
+        @Html.TextBoxFor(m => m.Words, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Words)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Introduction)
-        @Html.TextBoxFor(m => m.Introduction, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Introduction)
+        @Html.LabelFor(m => m.Context)
+        @Html.TextBoxFor(m => m.Context, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Context)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Status)
         @Html.DropDownListFor(m => m.Status, (IEnumerable<SelectListItem>)ViewBag.StatusSel, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Vector)
-        @Html.DropDownListFor(m => m.Vector, (IEnumerable<SelectListItem>)ViewBag.VectorSel, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Rank)
+        @Html.TextBoxFor(m => m.Rank, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(model => model.Rank)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.RedditRank)
-        @Html.TextBoxFor(m => m.RedditRank, new { @class = "form-control", type = "number" })
-        @Html.ValidationMessageFor(model => model.RedditRank)
+        @Html.LabelFor(m => m.UserId)
+        @Html.TextBoxFor(m => m.UserId, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(model => model.UserId)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.DifficultyRank)
-        @Html.TextBoxFor(m => m.DifficultyRank, new { @class = "form-control", type = "number" })
-        @Html.ValidationMessageFor(model => model.DifficultyRank)
+        @Html.LabelFor(m => m.ArticleId)
+        @Html.TextBoxFor(m => m.ArticleId, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(model => model.ArticleId)
     </div>
     <input type="submit" value="Submit" class="btn btn-default" />
 }

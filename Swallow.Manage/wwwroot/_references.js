@@ -1,8 +1,7 @@
 ﻿/// <autosync enabled="true" />
-/// <reference path="../gulpfile.es5.min.js" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/index.js" />
-/// <reference path="js/site - 复制.js" />
+/// <reference path="js/query-string.js" />
 /// <reference path="js/site.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/bootstrap-sass-official/assets/javascripts/bootstrap.js" />

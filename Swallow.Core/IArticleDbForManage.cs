@@ -1,20 +1,15 @@
 ﻿using PagedList;
 using Swallow.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swallow.Core {
     public interface IArticleDbForManage {
         IPagedList<Article> Index(
-            ArticleStatus status = ArticleStatus.Normal, 
+            ArticleStatus status = ArticleStatus.All, 
             ArticleType type = ArticleType.All, 
             ArticleVector vector = ArticleVector.All,
+            string query = null,
             SortPattern pattern = SortPattern.Newest, 
-            string query = null, 
-            int page = 1, 
+            int page = 1,
             int page_size = 30
         );
         Article Get(string id);

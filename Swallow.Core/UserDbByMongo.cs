@@ -4,6 +4,7 @@ using Swallow.Entity;
 using System;
 using PagedList;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 
 namespace Swallow.Core {
     public class UserDbByMongo : IUserDbForManage {
@@ -13,12 +14,26 @@ namespace Swallow.Core {
             this.Db = mongo.Users;
         }
 
-        public IPagedList<User> Index(UserStatus status = UserStatus.Normal, SortPattern pattern = SortPattern.Newest, string query = null, int page = 1, int page_size = 30) {
+        public IPagedList<User> Index(
+            UserStatus status = UserStatus.All, 
+            string query = null, 
+            SortPattern pattern = SortPattern.Newest, 
+            int page = 1,
+            int page_size = 30
+        ) {
             var users = Db.AsQueryable();
+
             if (status != UserStatus.All)
                 users = users.Where(d => d.Status == status);
-            users = users.Where(d => (string.IsNullOrEmpty(query) || query == d.Phone || query == d.Name));
+
+            if (!string.IsNullOrEmpty(query))
+                if (query.Length == 24) // http://stackoverflow.com/a/14315888
+                    users = users.Where(d => query == d.Id);
+                else
+                    users = users.Where(d => query == d.Phone || query == d.Name);
+
             users = pattern.UserOrderBy()(users);
+
             return users.ToPagedList(page, page_size);
         }
 
@@ -27,6 +42,21 @@ namespace Swallow.Core {
         }
 
         #region ForManage
+        public User Create(User model, out string failure) {
+            if (!EntityValidator.TryValidate(model, "Password,CreatDate", out failure))
+                return null;
+
+            if (Db.AsQueryable().Where(d => d.Id != model.Id && d.Phone == model.Phone).Any()) {
+                failure = "Phone已被使用";
+                return null;
+            }
+
+            model.Password = User.HashPassword(model.Password);
+            model.Create();
+            Db.InsertOne(model);
+            return model;
+        }
+
         public User Update(User model, out string failure) {
             if (!EntityValidator.TryValidate(model, "Password,CreatDate", out failure))
                 return null;

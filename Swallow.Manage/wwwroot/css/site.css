@@ -490,6 +490,9 @@ article {
   display: table-cell;
   vertical-align: middle; }
 
+form.navbar-right {
+  margin-right: 0; }
+
 span.field-validation-error {
   color: red; }
 

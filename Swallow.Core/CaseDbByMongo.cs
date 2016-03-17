@@ -2,53 +2,50 @@
 using MongoDB.Driver.Linq;
 using PagedList;
 using Swallow.Entity;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Swallow.Core {
-    public class ArticleDbByMongo: IArticleDbForManage {
-        private readonly IMongoCollection<Article> Db;
+    public class CaseDbByMongo : ICaseDbForManage {
+        private readonly IMongoCollection<Case> Db;
 
-        public ArticleDbByMongo(MongoDbContext mongo) {
-            this.Db = mongo.Articles;
+        public CaseDbByMongo(MongoDbContext mongo) {
+            this.Db = mongo.Cases;
         }
 
-        public IPagedList<Article> Index(
-            ArticleStatus status = ArticleStatus.All,
-            ArticleType type = ArticleType.All,
-            ArticleVector vector = ArticleVector.All,
+        public IPagedList<Case> Index(
+            CaseStatus status = CaseStatus.All,
+            string userId = null,
+            string articleId = null,
             string query = null,
             SortPattern pattern = SortPattern.Newest,
             int page = 1,
             int page_size = 30
         ) {
-            var articles = Db.AsQueryable();
+            var cases = Db.AsQueryable();
 
-            if (status != ArticleStatus.All)
-                articles = articles.Where(d => d.Status == status);
-            if (type != ArticleType.All)
-                articles = articles.Where(d => d.Type == type);
-            if (vector != ArticleVector.All)
-                articles = articles.Where(d => d.Vector == vector);
+            if (status != CaseStatus.All)
+                cases = cases.Where(d => d.Status == status);
+            if (!string.IsNullOrEmpty(userId))
+                cases = cases.Where(d => d.UserId == userId);
+            if (!string.IsNullOrEmpty(articleId))
+                cases = cases.Where(d => d.ArticleId == articleId);
 
             if (!string.IsNullOrEmpty(query))
                 if (query.Length == 24)
-                    articles = articles.Where(d => query == d.Id);
+                    cases = cases.Where(d => query == d.Id);
                 else
-                    articles = articles.Where(d => d.UserId == query || d.Title == query || d. Introduction == query);
+                    cases = cases.Where(d => d.UserId == query || d.Words == query || d.ArticleTitle == query);
 
-            articles = pattern.ArticleOrderBy()(articles);
 
-            return articles.ToPagedList(page, page_size);
+            cases = pattern.CaseOrderBy()(cases);
+
+            return cases.ToPagedList(page, page_size);
         }
 
-        public Article Get(string id) {
+        public Case Get(string id) {
             return Db.AsQueryable().Where(d => d.Id == id).SingleOrDefault();
         }
 
-        public Article Create(Article model, out string failure) {
+        public Case Create(Case model, out string failure) {
             if (!EntityValidator.TryValidate(model, null, out failure))
                 return null;
             model.Create();
@@ -57,7 +54,7 @@ namespace Swallow.Core {
         }
 
         #region ForManage
-        public Article Update(Article model, out string failure) {
+        public Case Update(Case model, out string failure) {
             if (!EntityValidator.TryValidate(model, null, out failure))
                 return null;
 
