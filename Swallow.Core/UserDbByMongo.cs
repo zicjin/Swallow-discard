@@ -26,11 +26,8 @@ namespace Swallow.Core {
             if (status != UserStatus.All)
                 users = users.Where(d => d.Status == status);
 
-            if (!string.IsNullOrEmpty(query))
-                if (query.Length == 24) // http://stackoverflow.com/a/14315888
-                    users = users.Where(d => query == d.Id);
-                else
-                    users = users.Where(d => query == d.Phone || query == d.Name);
+            if (!string.IsNullOrEmpty(query)) // 不要查询ID http://stackoverflow.com/a/14315888
+                users = users.Where(d => query == d.Phone || query == d.Name);
 
             users = pattern.UserOrderBy()(users);
 

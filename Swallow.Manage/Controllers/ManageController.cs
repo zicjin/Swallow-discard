@@ -10,12 +10,14 @@ using Microsoft.Extensions.Logging;
 using Swallow.Manage.Models;
 using Swallow.Manage.Services;
 using Swallow.Manage.ViewModels.Manage;
+using AspNet.Identity3.MongoDB;
 
 namespace Swallow.Manage.Controllers {
     [Authorize]
     public class ManageController : Controller {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
@@ -23,14 +25,41 @@ namespace Swallow.Manage.Controllers {
         public ManageController(
         UserManager<AppUser> userManager,
         SignInManager<AppUser> signInManager,
+        RoleManager<IdentityRole> roleManager,
         IEmailSender emailSender,
         ISmsSender smsSender,
         ILoggerFactory loggerFactory) {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = AppUser.Admin + "," + AppUser.Cteator)]
+        public IActionResult Roles(int userId, int role) {
+            ViewBag.Roles = _roleManager.Roles.ToList();
+            return View(_userManager.Users.ToList());
+        }
+
+        [HttpPost]
+        [Authorize(Roles = AppUser.Admin)]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Roles(string userIdsStr, string rolesStr) {
+            IEnumerable<string> userIds = userIdsStr.Split(',');
+            IEnumerable<string> roles = rolesStr.Split(',');
+
+            foreach (string userId in userIds) {
+                var user = await _userManager.FindByIdAsync(userId);
+                var _roles = await _userManager.GetRolesAsync(user);
+                await _userManager.RemoveFromRolesAsync(user, _roles);
+                await _userManager.AddToRolesAsync(user, roles);
+            }
+
+            ViewBag.Roles = _roleManager.Roles.ToList();
+            return View(_userManager.Users.ToList());
         }
 
         //
@@ -48,6 +77,7 @@ namespace Swallow.Manage.Controllers {
 
             var user = await GetCurrentUserAsync();
             var model = new IndexViewModel {
+                IsAdmin = await _userManager.IsInRoleAsync(user, "admin"),
                 HasPassword = await _userManager.HasPasswordAsync(user),
                 PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
                 TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),

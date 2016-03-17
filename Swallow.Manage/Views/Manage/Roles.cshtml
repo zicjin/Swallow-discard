@@ -1,0 +1,90 @@
+﻿@using AspNet.Identity3.MongoDB
+@model IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "Manage account's roles";
+}
+
+<h2>@ViewData["Title"].</h2>
+
+@using (Html.BeginForm("Index", "Case", FormMethod.Get, new { @class = "form-inline" })) {
+    <input type="text" class="input-m form-control" value="@ViewBag.Query" name="query" placeholder="用户名">
+    <button type="submit" class="btn btn-primary">搜索</button>
+}
+
+@using (Html.BeginForm(FormMethod.Post, new { id = "admin_role" } )) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.CheckBox("ck_alluser")
+                    </th>
+                    <th>Name</th>
+                </tr>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>@Html.CheckBox("ck_user", new { user_id = item.Id })</td>
+                        <td>@item.UserName</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.CheckBox("ck_allrole")
+                    </th>
+                    <th>Name</th>
+                </tr>
+                @foreach (var item in (IList<IdentityRole>)ViewBag.Roles) {
+                    <tr>
+                        <td>@Html.CheckBox("ck_role", new { role = item.Name })</td>
+                        <td>@item.Name</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    @Html.Hidden("UserIds")
+    @Html.Hidden("Roles")
+    <input type="submit" value="Submit" class="btn btn-default" />
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            var ck_user = $("input[name='ck_user']")
+            $("input[name='ck_alluser']").on("click", function () {
+                ck_user.prop('checked', true)
+            })
+            var ck_role = $("input[name='ck_role']")
+            $("input[name='ck_allrole']").on("click", function () {
+                ck_role.prop('checked', true)
+            })
+
+            $("#admin_role").submit(function () {
+                var user_ids = [];
+                ck_user.is(":visible").each(function () {
+                    user_ids.push($(this).attr("user_id"))
+                })
+
+                var roles = [];
+                ck_role.each(function () {
+                    roles.push($(this).attr("role"))
+                })
+
+                if (user_ids.length > 3)
+                    if (!confirm("即将更新User:" + user_ids.join(",") + "角色为：" + roles.join(",")))
+                        return false
+
+                $("input[name='UserIds']", this).val(user_ids.join(","))
+                $("input[name='Roles']", this).val(roles.join(","))
+            })
+        })
+    </script>
+}

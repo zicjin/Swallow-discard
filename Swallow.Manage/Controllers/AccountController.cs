@@ -35,6 +35,18 @@ namespace Swallow.Manage.Controllers {
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
+        //[AllowAnonymous]
+        //public async Task<IActionResult> SeedAdmin() {
+        //    string email = "zicjin@gmail.com";
+        //    IdentityResult result = await _userManager.CreateAsync(new AppUser() { UserName = email, Email = email }, "#Z565656z");
+        //    if (!result.Succeeded)
+        //        return new JsonResult(new { msg = result.ToString() });
+        //    var user = await _userManager.FindByEmailAsync(email);
+        //    await _roleManager.CreateAsync(new IdentityRole() { Name = "admin" });
+        //    await _userManager.AddToRoleAsync(user, "admin");
+        //    return new JsonResult(new { msg = "success" });
+        //}
+
         //
         // GET: /Account/Login
         [HttpGet]
@@ -78,6 +90,7 @@ namespace Swallow.Manage.Controllers {
         //
         // GET: /Account/Register
         [HttpGet]
+        //[Authorize(Roles = "Admin")]
         [AllowAnonymous]
         public IActionResult Register() {
             return View();
@@ -86,6 +99,7 @@ namespace Swallow.Manage.Controllers {
         //
         // POST: /Account/Register
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model) {

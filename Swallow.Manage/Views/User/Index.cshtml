@@ -8,7 +8,7 @@
 <div class="sub-navbar">
     <div style="margin-top:3px; float:right;">
         @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-inline" })) {
-            <input type="text" class="form-control" value="@ViewBag.Query" name="query" placeholder="手机号/用户名/ID">
+            <input type="text" class="form-control" value="@ViewBag.Query" name="query" placeholder="手机号/用户名">
             <button type="submit" class="btn btn-primary">搜索</button>
         }
     </div>

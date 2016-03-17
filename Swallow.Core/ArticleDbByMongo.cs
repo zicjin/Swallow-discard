@@ -34,10 +34,7 @@ namespace Swallow.Core {
                 articles = articles.Where(d => d.Vector == vector);
 
             if (!string.IsNullOrEmpty(query))
-                if (query.Length == 24)
-                    articles = articles.Where(d => query == d.Id);
-                else
-                    articles = articles.Where(d => d.UserId == query || d.Title == query || d. Introduction == query);
+                articles = articles.Where(d => d.UserId == query || d.Title == query || d. Introduction == query);
 
             articles = pattern.ArticleOrderBy()(articles);
 

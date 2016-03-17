@@ -30,11 +30,7 @@ namespace Swallow.Core {
                 cases = cases.Where(d => d.ArticleId == articleId);
 
             if (!string.IsNullOrEmpty(query))
-                if (query.Length == 24)
-                    cases = cases.Where(d => query == d.Id);
-                else
-                    cases = cases.Where(d => d.UserId == query || d.Words == query || d.ArticleTitle == query);
-
+                cases = cases.Where(d => d.UserId == query || d.Words == query || d.ArticleTitle == query);
 
             cases = pattern.CaseOrderBy()(cases);
 

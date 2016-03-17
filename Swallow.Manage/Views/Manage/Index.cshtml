@@ -10,14 +10,17 @@
     <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
+        @if (Model.IsAdmin) {
+            <dt>AdminRoles:</dt>
+            <dd>
+                <text>[&nbsp;&nbsp;<a asp-controller="Manage" asp-action="Roles">Roles</a>&nbsp;&nbsp;]</text>
+            </dd>
+        }
         <dt>Password:</dt>
         <dd>
-            @if (Model.HasPassword)
-            {
+            @if (Model.HasPassword) {
                 <text>[&nbsp;&nbsp;<a asp-controller="Manage" asp-action="ChangePassword">Change</a>&nbsp;&nbsp;]</text>
-            }
-            else
-            {
+            } else {
                 <text>[&nbsp;&nbsp;<a asp-controller="Manage" asp-action="SetPassword">Create</a>&nbsp;&nbsp;]</text>
             }
         </dd>
@@ -67,4 +70,5 @@
                 }*@
         </dd>
     </dl>
+
 </div>
