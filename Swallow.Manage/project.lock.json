@@ -98,6 +98,28 @@
           "lib/net45/System.Interactive.Async.dll": {}
         }
       },
+      "log4mongo-net/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "log4net": "2.0.0",
+          "MongoDB.Driver": "2.0.1"
+        },
+        "compile": {
+          "lib/net45/Log4Mongo.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Log4Mongo.dll": {}
+        }
+      },
+      "log4net/2.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net45-full/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net45-full/log4net.dll": {}
+        }
+      },
       "Microsoft.ApplicationInsights/1.1.1-beta": {
         "type": "package",
         "compile": {
@@ -1886,6 +1908,15 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
+      "RestSharp/105.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net451/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net451/RestSharp.dll": {}
+        }
+      },
       "Swallow.Core/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -1905,6 +1936,18 @@
           "MongoDB.Bson": "2.2.3",
           "MongoDB.Driver": "2.2.3",
           "MongoDB.Driver.Core": "2.2.3"
+        }
+      },
+      "Swallow.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "log4mongo-net": "2.2.0",
+          "log4net": "2.0.5",
+          "MongoDB.Bson": "2.0.1",
+          "MongoDB.Driver": "2.0.1",
+          "MongoDB.Driver.Core": "2.0.1",
+          "RestSharp": "105.2.3"
         }
       },
       "System.Collections/4.0.0": {
@@ -2213,6 +2256,28 @@
         },
         "runtime": {
           "lib/net45/System.Interactive.Async.dll": {}
+        }
+      },
+      "log4mongo-net/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "log4net": "2.0.0",
+          "MongoDB.Driver": "2.0.1"
+        },
+        "compile": {
+          "lib/net45/Log4Mongo.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Log4Mongo.dll": {}
+        }
+      },
+      "log4net/2.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net45-full/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net45-full/log4net.dll": {}
         }
       },
       "Microsoft.ApplicationInsights/1.1.1-beta": {
@@ -4006,6 +4071,15 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
+      "RestSharp/105.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net451/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net451/RestSharp.dll": {}
+        }
+      },
       "Swallow.Core/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -4025,6 +4099,18 @@
           "MongoDB.Bson": "2.2.3",
           "MongoDB.Driver": "2.2.3",
           "MongoDB.Driver.Core": "2.2.3"
+        }
+      },
+      "Swallow.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "log4mongo-net": "2.2.0",
+          "log4net": "2.0.5",
+          "MongoDB.Bson": "2.0.1",
+          "MongoDB.Driver": "2.0.1",
+          "MongoDB.Driver.Core": "2.0.1",
+          "RestSharp": "105.2.3"
         }
       },
       "System.Collections/4.0.0": {
@@ -4333,6 +4419,28 @@
         },
         "runtime": {
           "lib/net45/System.Interactive.Async.dll": {}
+        }
+      },
+      "log4mongo-net/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "log4net": "2.0.0",
+          "MongoDB.Driver": "2.0.1"
+        },
+        "compile": {
+          "lib/net45/Log4Mongo.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Log4Mongo.dll": {}
+        }
+      },
+      "log4net/2.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net45-full/log4net.dll": {}
+        },
+        "runtime": {
+          "lib/net45-full/log4net.dll": {}
         }
       },
       "Microsoft.ApplicationInsights/1.1.1-beta": {
@@ -6126,6 +6234,15 @@
           "lib/net45/Remotion.Linq.dll": {}
         }
       },
+      "RestSharp/105.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net451/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/net451/RestSharp.dll": {}
+        }
+      },
       "Swallow.Core/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -6145,6 +6262,18 @@
           "MongoDB.Bson": "2.2.3",
           "MongoDB.Driver": "2.2.3",
           "MongoDB.Driver.Core": "2.2.3"
+        }
+      },
+      "Swallow.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "log4mongo-net": "2.2.0",
+          "log4net": "2.0.5",
+          "MongoDB.Bson": "2.0.1",
+          "MongoDB.Driver": "2.0.1",
+          "MongoDB.Driver.Core": "2.0.1",
+          "RestSharp": "105.2.3"
         }
       },
       "System.Collections/4.0.0": {
@@ -6381,6 +6510,10 @@
       "type": "project",
       "path": "../wrap/Swallow.Entity/project.json"
     },
+    "Swallow.Service/1.0.0": {
+      "type": "project",
+      "path": "../wrap/Swallow.Service/project.json"
+    },
     "AspNet.Identity3.MongoDB/1.0.0-rc1-final-u2": {
       "type": "package",
       "sha512": "bKZPrstFBubuEHUcBQIynTkNHKdo2o6qZOSh5f6lZLuHw+YH0Y4SqP+fC85n4ffYYIJrGcGGr/KwLaMbbExs8g==",
@@ -6439,6 +6572,41 @@
         "lib/net45/System.Interactive.Async.XML",
         "lib/portable-windows8+net45+wp8/System.Interactive.Async.dll",
         "lib/portable-windows8+net45+wp8/System.Interactive.Async.XML"
+      ]
+    },
+    "log4mongo-net/2.2.0": {
+      "type": "package",
+      "sha512": "rwm7gB7ZlpdamgoKhrhC2DRnTpE7PdXoYvvRnrs2tGyeZt1FGg6vWwpla/JXa4aPSGoh2EPPleYzqz481+/ZMg==",
+      "files": [
+        "lib/net45/Log4Mongo.dll",
+        "log4mongo-net.2.2.0.nupkg",
+        "log4mongo-net.2.2.0.nupkg.sha512",
+        "log4mongo-net.nuspec"
+      ]
+    },
+    "log4net/2.0.5": {
+      "type": "package",
+      "sha512": "AEqPZz+v+OikfnR2SqRVdQPnSaLq5y9Iz1CfRQZ9kTKPYCXHG6zYmDHb7wJotICpDLMr/JqokyjiqKAjUKp0ng==",
+      "files": [
+        "lib/net10-full/log4net.dll",
+        "lib/net10-full/log4net.xml",
+        "lib/net11-full/log4net.dll",
+        "lib/net11-full/log4net.xml",
+        "lib/net20-full/log4net.dll",
+        "lib/net20-full/log4net.xml",
+        "lib/net35-client/log4net.dll",
+        "lib/net35-client/log4net.xml",
+        "lib/net35-full/log4net.dll",
+        "lib/net35-full/log4net.xml",
+        "lib/net40-client/log4net.dll",
+        "lib/net40-client/log4net.xml",
+        "lib/net40-full/log4net.dll",
+        "lib/net40-full/log4net.xml",
+        "lib/net45-full/log4net.dll",
+        "lib/net45-full/log4net.xml",
+        "log4net.2.0.5.nupkg",
+        "log4net.2.0.5.nupkg.sha512",
+        "log4net.nuspec"
       ]
     },
     "Microsoft.ApplicationInsights/1.1.1-beta": {
@@ -7865,6 +8033,42 @@
         "Remotion.Linq.nuspec"
       ]
     },
+    "RestSharp/105.2.3": {
+      "type": "package",
+      "sha512": "50LkciOclb7Lza9QXqR9reKeUoPlDQiFD4iBdOmd6twOBmTtqEFIOXQgdDdsTHQg4HcGh6EvrM6gN1X72vkJLA==",
+      "files": [
+        "lib/MonoAndroid10/RestSharp.dll",
+        "lib/MonoAndroid10/RestSharp.xml",
+        "lib/MonoTouch10/RestSharp.dll",
+        "lib/MonoTouch10/RestSharp.xml",
+        "lib/net35/RestSharp.dll",
+        "lib/net35/RestSharp.xml",
+        "lib/net4/RestSharp.dll",
+        "lib/net4/RestSharp.xml",
+        "lib/net45/RestSharp.dll",
+        "lib/net45/RestSharp.xml",
+        "lib/net451/RestSharp.dll",
+        "lib/net451/RestSharp.xml",
+        "lib/net452/RestSharp.dll",
+        "lib/net452/RestSharp.xml",
+        "lib/net46/RestSharp.dll",
+        "lib/net46/RestSharp.xml",
+        "lib/net4-client/RestSharp.dll",
+        "lib/net4-client/RestSharp.xml",
+        "lib/sl5/RestSharp.dll",
+        "lib/sl5/RestSharp.xml",
+        "lib/windowsphone8/RestSharp.dll",
+        "lib/windowsphone8/RestSharp.xml",
+        "lib/windowsphone81/RestSharp.dll",
+        "lib/windowsphone81/RestSharp.xml",
+        "lib/Xamarin.iOS10/RestSharp.dll",
+        "lib/Xamarin.iOS10/RestSharp.xml",
+        "readme.txt",
+        "RestSharp.105.2.3.nupkg",
+        "RestSharp.105.2.3.nupkg.sha512",
+        "RestSharp.nuspec"
+      ]
+    },
     "System.Collections/4.0.0": {
       "type": "package",
       "sha512": "i2vsGDIEbWdHcUSNDPKZP/ZWod6o740el7mGTCy0dqbCxQh74W4QoC+klUwPEtGEFuvzJ7bJgvwJqscosVNyZQ==",
@@ -8665,7 +8869,8 @@
     ],
     "DNX,Version=v4.5.1": [
       "Swallow.Core >= 1.0.0-*",
-      "Swallow.Entity >= 1.0.0-*"
+      "Swallow.Entity >= 1.0.0-*",
+      "Swallow.Service >= 1.0.0-*"
     ]
   }
 }

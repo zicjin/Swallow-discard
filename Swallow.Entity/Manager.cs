@@ -21,10 +21,6 @@ namespace Swallow.Entity {
         [Required]
         public string Password { get; set; } //Encrypted
 
-        public static string HashPassword(string value) {
-            return Encrypt.EncryptUserPassword(value);
-        }
-
         public DateTime CreateTime { get; set; }
         public virtual void Creat() {
             CreateTime = DateTime.Now;

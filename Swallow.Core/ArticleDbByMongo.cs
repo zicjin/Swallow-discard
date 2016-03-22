@@ -58,6 +58,11 @@ namespace Swallow.Core {
             if (!EntityValidator.TryValidate(model, null, out failure))
                 return null;
 
+            if (model.Status == ArticleStatus.All) {
+                failure = "status is fail";
+                return null;
+            }
+
             ReplaceOneResult result = Db.ReplaceOne(
                 d => d.Id == model.Id,
                 model,

@@ -1,5 +1,6 @@
 ﻿using PagedList;
 using Swallow.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Swallow.Core {
     public interface IUserDbForManage {

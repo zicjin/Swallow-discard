@@ -24,7 +24,7 @@ namespace Swallow.Entity {
         public string Words { get; set; }
 
         public string Context { get; set; }
-        public int Rank { get; set; }
+        public int Rank { get; set; } // 记忆曲线
         public DateTime CreateTime { get; set; }
 
         public virtual void Create() {

@@ -8,10 +8,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swallow.Manage.Models;
-using Swallow.Manage.Services;
 using MongoDB.Driver;
 using Swallow.Entity;
 using Swallow.Core;
+using Swallow.Service;
 
 namespace Swallow.Manage {
     public class Startup {
@@ -52,8 +52,8 @@ namespace Swallow.Manage {
             services.AddMvc();
 
             // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddTransient<IEmailSender, MessageSender>();
+            services.AddTransient<ISmsSender, MessageSender>();
 
             services.AddTransient<IUserDbForManage, UserDbByMongo>();
             services.AddTransient<IArticleDbForManage, ArticleDbByMongo>();

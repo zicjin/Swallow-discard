@@ -36,7 +36,8 @@
         "dnx451": {
             "dependencies": {
                 "Swallow.Core": "1.0.0-*",
-                "Swallow.Entity": "1.0.0-*"
+                "Swallow.Entity": "1.0.0-*",
+                "Swallow.Service": "1.0.0-*"
             }
         }
     },

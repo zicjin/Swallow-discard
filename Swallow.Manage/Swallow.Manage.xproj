@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Swallow.Core\Swallow.Core.csproj" />
     <ProjectReference Include="..\Swallow.Entity\Swallow.Entity.csproj" />
+    <ProjectReference Include="..\Swallow.Service\Swallow.Service.csproj" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

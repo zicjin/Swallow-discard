@@ -8,9 +8,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using Swallow.Manage.Models;
-using Swallow.Manage.Services;
 using Swallow.Manage.ViewModels.Manage;
 using AspNet.Identity3.MongoDB;
+using Swallow.Service;
 
 namespace Swallow.Manage.Controllers {
     [Authorize]

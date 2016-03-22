@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Swallow.Manage.Services
-{
-    public interface ISmsSender
-    {
+namespace Swallow.Service {
+    public interface ISmsSender {
         Task SendSmsAsync(string number, string message);
     }
 }

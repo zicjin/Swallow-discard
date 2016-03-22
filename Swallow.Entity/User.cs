@@ -4,17 +4,24 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Swallow.Entity {
     public enum UserStatus {
         All = 0,
         Unapproved = 1,
         Normal = 2,
-        Charger = 3,
         Reported = 10,
         Freeze = 11,
-        Admin = 80,
+        Verification = 12,
         Delete = 90,
+    }
+
+    public enum UserRole {
+        All = 0,
+        Normal = 1,
+        Charger = 10,
+        Manager = 90,
     }
 
     public class User {
@@ -26,6 +33,11 @@ namespace Swallow.Entity {
         public bool CouldShow() {
             return (Status != UserStatus.Freeze && Status != UserStatus.Delete);
         }
+        public bool CouldManageSelf() {
+            return (Status != UserStatus.Unapproved && Status != UserStatus.Delete);
+        }
+
+        public UserRole Role { get; set; }
 
         [Required]
         [DisplayName("用户名")]
@@ -43,9 +55,6 @@ namespace Swallow.Entity {
 
         [Required]
         public string Password { get; set; } //Encrypted
-        public static string HashPassword(string value) {
-            return Encrypt.EncryptUserPassword(value);
-        }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
@@ -58,8 +67,13 @@ namespace Swallow.Entity {
 
         [Display(Name = "最近使用日期")]
         public DateTime LastLoginTime { get; set; }
+        public int FreePhraseLimit { get; set; } // 免费用户15/天词组翻译限制。AM3点清空
+        public int WildPhraseLimit { get; set; } // 成本接受范围2600/月。暂不清空
 
         public int Rank { get; set; } // article popular
         public int CaseCount { get; set; } // 主动冗余
+
+        [NotMapped]
+        public string RememberToken { get; set; }
     }
 }

@@ -52,6 +52,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,6 +65,7 @@
     <Compile Include="CaseDbByMongo.cs" />
     <Compile Include="ArticleDbByMongo.cs" />
     <Compile Include="ICaseDbForManage.cs" />
+    <Compile Include="IUserDbForApi.cs" />
     <Compile Include="MongoDbContext.cs" />
     <Compile Include="IArticleDbForManage.cs" />
     <Compile Include="IUserDbForManage.cs" />
@@ -74,6 +76,10 @@
     <ProjectReference Include="..\Swallow.Entity\Swallow.Entity.csproj">
       <Project>{102d7611-b3c6-4d2f-b053-3cba43dd71b2}</Project>
       <Name>Swallow.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Swallow.Service\Swallow.Service.csproj">
+      <Project>{ebafedab-1b3d-4996-a333-65b89c0bbea8}</Project>
+      <Name>Swallow.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

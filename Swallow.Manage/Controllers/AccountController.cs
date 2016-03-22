@@ -10,8 +10,8 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
 using Swallow.Manage.Models;
-using Swallow.Manage.Services;
 using Swallow.Manage.ViewModels.Account;
+using Swallow.Service;
 
 namespace Swallow.Manage.Controllers {
     [Authorize]
