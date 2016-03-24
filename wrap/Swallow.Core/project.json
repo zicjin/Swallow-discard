@@ -13,7 +13,12 @@
         "MongoDB.Driver.Core": "2.2.3",
         "PagedList": "1.17.0.0",
         "PagedList.Mvc": "4.5.0.0",
-        "Swallow.Entity": "1.0.0-*"
+        "Swallow.Entity": "1.0.0-*",
+        "ServiceStack.Common": "4.0.54",
+        "ServiceStack.Interfaces": "4.0.54",
+        "ServiceStack.Redis": "4.0.54",
+        "ServiceStack.Text": "4.0.54",
+        "Swallow.Service": "1.0.0-*"
       }
     }
   }

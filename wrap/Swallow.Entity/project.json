@@ -10,7 +10,8 @@
       "dependencies": {
         "MongoDB.Bson": "2.2.3",
         "MongoDB.Driver": "2.2.3",
-        "MongoDB.Driver.Core": "2.2.3"
+        "MongoDB.Driver.Core": "2.2.3",
+        "Newtonsoft.Json": "8.0.3"
       }
     }
   }

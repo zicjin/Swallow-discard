@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Swallow.Manage.Models;
 using Swallow.Manage.ViewModels.Account;
 using Swallow.Service;
+using Swallow.Core;
 
 namespace Swallow.Manage.Controllers {
     [Authorize]

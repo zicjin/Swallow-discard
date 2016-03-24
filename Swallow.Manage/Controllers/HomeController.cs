@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
-using Swallow.Manage.Models;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Authorization;
-using AspNet.Identity3.MongoDB;
+using Swallow.Core;
 
 namespace Swallow.Manage.Controllers {
     public class HomeController : Controller {
+        MongoDbContext context;
+        public HomeController(MongoDbContext _context) {
+            context = _context;
+        }
 
         public IActionResult Index() {
             return View();
@@ -17,6 +19,13 @@ namespace Swallow.Manage.Controllers {
 
         public IActionResult Error() {
             return View();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public IActionResult SeedDb() {
+            DbSeed.MongoDB(context);
+            return new JsonResult(new { msg = "success" });
         }
     }
 }

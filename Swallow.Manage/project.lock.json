@@ -1869,7 +1869,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "Newtonsoft.Json/6.0.6": {
+      "Newtonsoft.Json/8.0.3": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -1917,6 +1917,49 @@
           "lib/net451/RestSharp.dll": {}
         }
       },
+      "ServiceStack.Common/4.0.54": {
+        "type": "package",
+        "dependencies": {
+          "ServiceStack.Interfaces": "4.0.54",
+          "ServiceStack.Text": "4.0.54"
+        },
+        "compile": {
+          "lib/net40/ServiceStack.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Common.dll": {}
+        }
+      },
+      "ServiceStack.Interfaces/4.0.54": {
+        "type": "package",
+        "compile": {
+          "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
+        }
+      },
+      "ServiceStack.Redis/4.0.54": {
+        "type": "package",
+        "dependencies": {
+          "ServiceStack.Common": "4.0.54"
+        },
+        "compile": {
+          "lib/net40/ServiceStack.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Redis.dll": {}
+        }
+      },
+      "ServiceStack.Text/4.0.54": {
+        "type": "package",
+        "compile": {
+          "lib/net40/ServiceStack.Text.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Text.dll": {}
+        }
+      },
       "Swallow.Core/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -1926,7 +1969,12 @@
           "MongoDB.Driver.Core": "2.2.3",
           "PagedList": "1.17.0",
           "PagedList.Mvc": "4.5.0",
-          "Swallow.Entity": "1.0.0"
+          "ServiceStack.Common": "4.0.54",
+          "ServiceStack.Interfaces": "4.0.54",
+          "ServiceStack.Redis": "4.0.54",
+          "ServiceStack.Text": "4.0.54",
+          "Swallow.Entity": "1.0.0",
+          "Swallow.Service": "1.0.0"
         }
       },
       "Swallow.Entity/1.0.0": {
@@ -1935,7 +1983,8 @@
         "dependencies": {
           "MongoDB.Bson": "2.2.3",
           "MongoDB.Driver": "2.2.3",
-          "MongoDB.Driver.Core": "2.2.3"
+          "MongoDB.Driver.Core": "2.2.3",
+          "Newtonsoft.Json": "8.0.3"
         }
       },
       "Swallow.Service/1.0.0": {
@@ -4032,7 +4081,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "Newtonsoft.Json/6.0.6": {
+      "Newtonsoft.Json/8.0.3": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -4080,6 +4129,49 @@
           "lib/net451/RestSharp.dll": {}
         }
       },
+      "ServiceStack.Common/4.0.54": {
+        "type": "package",
+        "dependencies": {
+          "ServiceStack.Interfaces": "4.0.54",
+          "ServiceStack.Text": "4.0.54"
+        },
+        "compile": {
+          "lib/net40/ServiceStack.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Common.dll": {}
+        }
+      },
+      "ServiceStack.Interfaces/4.0.54": {
+        "type": "package",
+        "compile": {
+          "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
+        }
+      },
+      "ServiceStack.Redis/4.0.54": {
+        "type": "package",
+        "dependencies": {
+          "ServiceStack.Common": "4.0.54"
+        },
+        "compile": {
+          "lib/net40/ServiceStack.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Redis.dll": {}
+        }
+      },
+      "ServiceStack.Text/4.0.54": {
+        "type": "package",
+        "compile": {
+          "lib/net40/ServiceStack.Text.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Text.dll": {}
+        }
+      },
       "Swallow.Core/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -4089,7 +4181,12 @@
           "MongoDB.Driver.Core": "2.2.3",
           "PagedList": "1.17.0",
           "PagedList.Mvc": "4.5.0",
-          "Swallow.Entity": "1.0.0"
+          "ServiceStack.Common": "4.0.54",
+          "ServiceStack.Interfaces": "4.0.54",
+          "ServiceStack.Redis": "4.0.54",
+          "ServiceStack.Text": "4.0.54",
+          "Swallow.Entity": "1.0.0",
+          "Swallow.Service": "1.0.0"
         }
       },
       "Swallow.Entity/1.0.0": {
@@ -4098,7 +4195,8 @@
         "dependencies": {
           "MongoDB.Bson": "2.2.3",
           "MongoDB.Driver": "2.2.3",
-          "MongoDB.Driver.Core": "2.2.3"
+          "MongoDB.Driver.Core": "2.2.3",
+          "Newtonsoft.Json": "8.0.3"
         }
       },
       "Swallow.Service/1.0.0": {
@@ -6195,7 +6293,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1"
       },
-      "Newtonsoft.Json/6.0.6": {
+      "Newtonsoft.Json/8.0.3": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -6243,6 +6341,49 @@
           "lib/net451/RestSharp.dll": {}
         }
       },
+      "ServiceStack.Common/4.0.54": {
+        "type": "package",
+        "dependencies": {
+          "ServiceStack.Interfaces": "4.0.54",
+          "ServiceStack.Text": "4.0.54"
+        },
+        "compile": {
+          "lib/net40/ServiceStack.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Common.dll": {}
+        }
+      },
+      "ServiceStack.Interfaces/4.0.54": {
+        "type": "package",
+        "compile": {
+          "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
+        },
+        "runtime": {
+          "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll": {}
+        }
+      },
+      "ServiceStack.Redis/4.0.54": {
+        "type": "package",
+        "dependencies": {
+          "ServiceStack.Common": "4.0.54"
+        },
+        "compile": {
+          "lib/net40/ServiceStack.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Redis.dll": {}
+        }
+      },
+      "ServiceStack.Text/4.0.54": {
+        "type": "package",
+        "compile": {
+          "lib/net40/ServiceStack.Text.dll": {}
+        },
+        "runtime": {
+          "lib/net40/ServiceStack.Text.dll": {}
+        }
+      },
       "Swallow.Core/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -6252,7 +6393,12 @@
           "MongoDB.Driver.Core": "2.2.3",
           "PagedList": "1.17.0",
           "PagedList.Mvc": "4.5.0",
-          "Swallow.Entity": "1.0.0"
+          "ServiceStack.Common": "4.0.54",
+          "ServiceStack.Interfaces": "4.0.54",
+          "ServiceStack.Redis": "4.0.54",
+          "ServiceStack.Text": "4.0.54",
+          "Swallow.Entity": "1.0.0",
+          "Swallow.Service": "1.0.0"
         }
       },
       "Swallow.Entity/1.0.0": {
@@ -6261,7 +6407,8 @@
         "dependencies": {
           "MongoDB.Bson": "2.2.3",
           "MongoDB.Driver": "2.2.3",
-          "MongoDB.Driver.Core": "2.2.3"
+          "MongoDB.Driver.Core": "2.2.3",
+          "Newtonsoft.Json": "8.0.3"
         }
       },
       "Swallow.Service/1.0.0": {
@@ -7969,9 +8116,9 @@
         "MongoDB.Driver.nuspec"
       ]
     },
-    "Newtonsoft.Json/6.0.6": {
+    "Newtonsoft.Json/8.0.3": {
       "type": "package",
-      "sha512": "w26uZNyCG5VeoKiEOJ4+9/o8koSofLKwHl7WLreIcp0U6r57L7WiRXmjp8MTKFw6dYNZ9AE0lw69WYbIhUsU9Q==",
+      "sha512": "KGsYQdS2zLH+H8x2cZaSI7e+YZ4SFIbyy1YJQYl6GYBWjf5o4H1A68nxyq+WTyVSOJQ4GqS/DiPE+UseUizgMg==",
       "files": [
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -7981,14 +8128,12 @@
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
         "lib/net45/Newtonsoft.Json.xml",
-        "lib/netcore45/Newtonsoft.Json.dll",
-        "lib/netcore45/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll",
-        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
-        "Newtonsoft.Json.6.0.6.nupkg",
-        "Newtonsoft.Json.6.0.6.nupkg.sha512",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.xml",
+        "Newtonsoft.Json.8.0.3.nupkg",
+        "Newtonsoft.Json.8.0.3.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "tools/install.ps1"
       ]
@@ -8067,6 +8212,52 @@
         "RestSharp.105.2.3.nupkg",
         "RestSharp.105.2.3.nupkg.sha512",
         "RestSharp.nuspec"
+      ]
+    },
+    "ServiceStack.Common/4.0.54": {
+      "type": "package",
+      "sha512": "pmMrSv+4RZFQATEmuBcm67nJ7XbPfmL9FggFI5FNkyYyYEFfm+4JpvDPLY7rtqz0d8DjH/TwjncfK3KCCQ0Npw==",
+      "files": [
+        "lib/net40/ServiceStack.Common.dll",
+        "lib/net40/ServiceStack.Common.xml",
+        "ServiceStack.Common.4.0.54.nupkg",
+        "ServiceStack.Common.4.0.54.nupkg.sha512",
+        "ServiceStack.Common.nuspec"
+      ]
+    },
+    "ServiceStack.Interfaces/4.0.54": {
+      "type": "package",
+      "sha512": "FPBXVGPA/0d0cTCJ0ak6iXh87nZiOg3ovw1ai90CzJIVRKlvj7KTg5OZwhF2XI+AHUpuS8Ex/xYrBlHC/al4Qg==",
+      "files": [
+        "lib/portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Interfaces.dll",
+        "ServiceStack.Interfaces.4.0.54.nupkg",
+        "ServiceStack.Interfaces.4.0.54.nupkg.sha512",
+        "ServiceStack.Interfaces.nuspec"
+      ]
+    },
+    "ServiceStack.Redis/4.0.54": {
+      "type": "package",
+      "sha512": "oVE4l5jFUlsYS9EAFF0/uAajdLt3kujo4vDRH/Ich0B7YlyFcldi1gShXGHdkcGkyBvM5/NEWEabf4ZKMMd75Q==",
+      "files": [
+        "lib/net40/ServiceStack.Redis.dll",
+        "lib/net40/ServiceStack.Redis.XML",
+        "ServiceStack.Redis.4.0.54.nupkg",
+        "ServiceStack.Redis.4.0.54.nupkg.sha512",
+        "ServiceStack.Redis.nuspec"
+      ]
+    },
+    "ServiceStack.Text/4.0.54": {
+      "type": "package",
+      "sha512": "+6928bGISEQlP3iJYseX0dOsbiPaxN0sxB7ILFEyy7vXcnmGvzZJXwVd/aTizC76ZeTh/CIwBR+3PDqdnKaF2w==",
+      "files": [
+        "lib/net40/ServiceStack.Text.dll",
+        "lib/net40/ServiceStack.Text.xml",
+        "lib/portable-net45+win8+monotouch+monoandroid+xamarin.ios10/ServiceStack.Text.dll",
+        "lib/sl5/ServiceStack.Text.dll",
+        "lib/sl5/ServiceStack.Text.xml",
+        "ServiceStack.Text.4.0.54.nupkg",
+        "ServiceStack.Text.4.0.54.nupkg.sha512",
+        "ServiceStack.Text.nuspec"
       ]
     },
     "System.Collections/4.0.0": {
@@ -8865,7 +9056,8 @@
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-rc1-final",
       "MongoDb.Driver >= 2.2.3",
       "AspNet.Identity3.MongoDB >= 1.0.0-rc1-final-*",
-      "PagedList.Mvc >= 4.5.0"
+      "PagedList.Mvc >= 4.5.0",
+      "ServiceStack.Redis >= 4.0.54"
     ],
     "DNX,Version=v4.5.1": [
       "Swallow.Core >= 1.0.0-*",

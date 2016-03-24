@@ -25,7 +25,8 @@
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
         "MongoDb.Driver": "2.2.3",
         "AspNet.Identity3.MongoDB": "1.0-rc1-final-*",
-        "PagedList.Mvc": "4.5.0"
+        "PagedList.Mvc": "4.5.0",
+        "ServiceStack.Redis": "4.0.54"
     },
 
     "commands": {
