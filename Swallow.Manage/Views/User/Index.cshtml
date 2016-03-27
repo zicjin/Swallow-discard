@@ -28,7 +28,7 @@
             Status
             @Html.DropDownList("select_status", (IEnumerable<SelectListItem>)ViewBag.StatusSel, new { @class = "sel-query" })
         </th>
-        <th>Roles</th>
+        <th>Role</th>
         <th>Rank</th>
         <th>CreateTime</th>
         <th>Cases</th>
@@ -40,7 +40,7 @@
             <td>@item.Id - @item.Phone</td>
             <td>@item.Name</td>
             <td>@((UserStatus)item.Status)</td>
-            <td>@string.Join(",", item.Roles)</td>
+            <td>@((UserRole)item.Role)</td>
             <td>@item.Rank</td>
             <td>@item.CreateTime</td>
             <td>

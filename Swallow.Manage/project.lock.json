@@ -6663,7 +6663,7 @@
     },
     "AspNet.Identity3.MongoDB/1.0.0-rc1-final-u2": {
       "type": "package",
-      "sha512": "bKZPrstFBubuEHUcBQIynTkNHKdo2o6qZOSh5f6lZLuHw+YH0Y4SqP+fC85n4ffYYIJrGcGGr/KwLaMbbExs8g==",
+      "sha512": "huHGzFmP0gCa9IjXjuuLrJyaitaRuWmqC8enP2S1aTDA0egD2zQR/DjYA9x8Rgndr9VG/rEXitz7/Bw2ZIg2tA==",
       "files": [
         "AspNet.Identity3.MongoDB.1.0.0-rc1-final-u2.nupkg",
         "AspNet.Identity3.MongoDB.1.0.0-rc1-final-u2.nupkg.sha512",
