@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Swallow.Core {
     public interface IUserDbForApi {
-        User Get(int id);
+        User Get(string id);
         User GetByPhone(string phone, out string failure);
         User GetSession(UserLoginForms forms, out string failure);
         bool ExistMobile(string phone);

@@ -10,10 +10,11 @@
       "dependencies": {
         "log4mongo-net": "2.2.0",
         "log4net": "2.0.5",
-        "MongoDB.Bson": "2.0.1",
-        "MongoDB.Driver": "2.0.1",
-        "MongoDB.Driver.Core": "2.0.1",
-        "RestSharp": "105.2.3"
+        "MongoDB.Bson": "2.2.3",
+        "MongoDB.Driver": "2.2.3",
+        "MongoDB.Driver.Core": "2.2.3",
+        "RestSharp": "105.2.3",
+        "Newtonsoft.Json": "8.0.3"
       }
     }
   }

@@ -56,13 +56,14 @@ namespace Swallow.Api {
             }));
 
             container.Bind<MongoDbContext>().To<MongoDbContext>().WithConstructorArgument("connection", ConfigurationManager.ConnectionStrings["MongoServer"].ConnectionString); ;
-            container.Bind<IUserDbForManage>().To<UserDbByMongo>();
+            container.Bind<IUserDbForApi>().To<UserDbByMongo>();
             container.Bind<IArticleDbForManage>().To<ArticleDbByMongo>();
             container.Bind<ICaseDbForManage>().To<CaseDbByMongo>();
             container.Bind<IEncryptorDecryptor>().To<EncryptorDecryptor>();
             container.Bind<IVerifyCode>().To<LeancloudVerifyCodeProvider>();
             container.Bind<IEmailSender>().To<MessageSender>();
             container.Bind<ISmsSender>().To<MessageSender>();
+            container.Bind<ITranslater>().To<YoudaoTranslater>();
 
             container.Bind<IRedisClientsManager>().To<RedisManagerPool>().WithConstructorArgument("hosts", new string[] { redisConnection });
             Container = container;

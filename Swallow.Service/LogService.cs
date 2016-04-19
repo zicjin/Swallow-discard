@@ -25,7 +25,7 @@ namespace Swallow.Service {
 
     public sealed class LogService {
 
-        public static void SetLog(MethodBase declaringType, Domain domain, LogType logtype, IList<string> parameters, string message) {
+        public static void SetLog(MethodBase declaringType, Domain domain, LogType logtype, IList<string> parameters, string message = null) {
             ILog Log = LogManager.GetLogger(domain.ToString(), declaringType.DeclaringType + "|" + declaringType.Name);
 
             StringBuilder msg = new StringBuilder();

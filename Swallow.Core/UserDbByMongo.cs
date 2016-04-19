@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Swallow.Core {
-    public class UserDbByMongo : IUserDbForManage {
+    public class UserDbByMongo : IUserDbForManage, IUserDbForApi {
         private readonly IMongoCollection<User> Db;
         private readonly IEncryptorDecryptor EncryptorDecryptor;
         private readonly IVerifyCode VerifyCode;

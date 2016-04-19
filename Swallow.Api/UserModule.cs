@@ -33,10 +33,10 @@ namespace Swallow.Api {
                 return HttpStatusCode.OK;
             };
 
-            Get["/{userid:int}"] = p => {
-                this.RequiresCurrentUser((int)p.userid);
+            Get["/{userid:string}"] = p => {
+                this.RequiresCurrentUser((string)p.userid);
                 var userId = this.Context.CurrentUser.Claims.First();
-                return UserDb.Get(int.Parse(userId));
+                return UserDb.Get(userId);
             };
 
             // 验证新手机号
@@ -82,7 +82,7 @@ namespace Swallow.Api {
 
             // 更新名称
             Put["/name"] = p => {
-                this.RequiresCurrentUser((int)p.userid);
+                this.RequiresCurrentUser((string)p.userid);
                 var forms = this.Bind<UserUpdateNameForms>();
                 string failure;
                 var user = UserDb.UpdateName(forms, out failure);
@@ -93,7 +93,7 @@ namespace Swallow.Api {
 
             // 更新密码
             Put["/password"] = p => {
-                this.RequiresCurrentUser((int)p.userid);
+                this.RequiresCurrentUser((string)p.userid);
                 var forms = this.Bind<UserUpdatePasswordForms>();
                 string failure;
                 var user = UserDb.UpdatePassword(forms, out failure);
@@ -104,7 +104,7 @@ namespace Swallow.Api {
 
             // 更新手机号
             Get["/update_phone1"] = p => {
-                this.RequiresCurrentUser((int)p.userid);
+                this.RequiresCurrentUser((string)p.userid);
                 var forms = this.Bind<UserUpdatePhoneForms1>();
                 string failure;
                 var user = UserDb.UpdatePhone1(forms, out failure);
@@ -113,7 +113,7 @@ namespace Swallow.Api {
                 return user;
             };
             Get["/update_phone2"] = p => {
-                this.RequiresCurrentUser((int)p.userid);
+                this.RequiresCurrentUser((string)p.userid);
                 var forms = this.Bind<UserUpdatePhoneForms2>();
                 string failure;
                 var user = UserDb.UpdatePhone2(forms, out failure);

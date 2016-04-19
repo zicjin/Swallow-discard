@@ -6,8 +6,8 @@ using System.Linq;
 
 namespace Swallow.Core {
     public class MongoDbContext {
-        public MongoDbContext(string connectionString) {
-            var database = new MongoClient(connectionString).GetDatabase("Swallow");
+        public MongoDbContext(string connection) {
+            var database = new MongoClient(connection).GetDatabase("Swallow");
             this.Users = database.GetCollection<User>("users");
             this.Articles = database.GetCollection<Article>("articles");
             this.Cases = database.GetCollection<Case>("cases");

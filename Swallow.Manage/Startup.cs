@@ -56,6 +56,7 @@ namespace Swallow.Manage {
             services.AddTransient<ISmsSender, MessageSender>();
             services.AddTransient<IEncryptorDecryptor, EncryptorDecryptor>();
             services.AddTransient<IVerifyCode, LeancloudVerifyCodeProvider>();
+            services.AddTransient<ITranslater, YoudaoTranslater>();
 
             services.AddTransient<IUserDbForManage, UserDbByMongo>();
             services.AddTransient<IArticleDbForManage, ArticleDbByMongo>();
