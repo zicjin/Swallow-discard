@@ -22,6 +22,7 @@ namespace Swallow.Service {
         public IList<string> Explains { get; set; }
     }
 
+    // http://fanyi.youdao.com/openapi?path=data-mode
     public class YoudaoTranslater : ITranslater {
         public async Task<string> Trans(TranslateForm form) {
 
@@ -37,7 +38,6 @@ namespace Swallow.Service {
                 return string.Empty;
             }
             
-
             return model.Translation.First();
         }
     }
